@@ -10,7 +10,9 @@ import { Oxygen } from '../models/oxygen';
 export class OxygenService {
   url:string = environment.url
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    console.log(this.url)
+  }
   getAllOxygen(page?,limit?):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes?page="+page+"&"+"limit="+limit)}
   getOneOxygen(id):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes/"+id)}
   addOxygen(oxygen: Oxygen): Observable<Oxygen> {return this.http.post<Oxygen>(this.url+"/oxygenes/",oxygen)}
