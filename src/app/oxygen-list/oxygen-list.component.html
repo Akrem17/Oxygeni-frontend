@@ -1,0 +1,56 @@
+<br><br><br><br>
+
+<br><br><br>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div  class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">{{ville}}</h2>
+                </div>
+                
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Capacité</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Contact</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let d of data; let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{d.oxygenes[0].capacite}} litres</td>
+                            <td>{{d.oxygenes[0].quantite}} bouteilles</td>
+                            <td>{{d.oxygenes[0].model}} </td>
+                            <td>{{d.tel}} </td>
+                    
+                          </tr>
+                          
+                        </tbody>
+                        
+                      </table>
+                      <mat-paginator [length]="100"
+                      [pageSize]="10"
+                      [pageSizeOptions]="[5, 10, 25, 100]">
+                    </mat-paginator>
+                    
+                    </div>
+                    </div>
+               
+                </div>
+                
+            </div>
+           <br>
+           <div style="text-align: center;">
+            <a routerLink="/chercher" class="btn btn--radius-2 btn--red" type="submit">لوج في بلاصة أخرى</a>
+        </div>
+        </div>
+    </div>
+
+  

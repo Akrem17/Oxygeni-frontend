@@ -1,0 +1,132 @@
+<br><br><br>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div  class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">بش نعاون بدبوسة أكسيجين</h2>
+                </div>
+                
+                <div class="card-body">
+                  <div style="text-align: center;"> معلومات تخص المالك</div><br>
+                    <form  [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()">
+                        <div class="form-row m-b-55">
+                            <div class="name">الإسم</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input formControlName="firstname"  class="input--style-5" type="text" name="first_name">
+                                            <label class="label--desc">الإسم</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="input-group-desc">
+                                            <input formControlName="lastname"  class="input--style-5" type="text" name="last_name">
+                                            <label class="label--desc">اللقب</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     
+                        <div class="form-row">
+                            <div class="name">الإيمايل<br> (email)</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input formControlName="email"  class="input--style-5" type="email" name="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="name">رقم الهاتف</div>
+                          <div class="value">
+                              <div class="input-group">
+                                  <input formControlName="telnum"  class="input--style-5" type="email" name="email">
+                              </div>
+                          </div>
+                      </div>
+       <!--                <div class="name">الولاية</div>
+                      <div class="value">
+                          <div class="input-group">
+                              <div sclass="rs-select2 js-select-simple select--no-search">
+                                  <select   style="margin-right: 180px;"  class="select-css" (change)="onChange($event.target.value)" formControlName="region"  name="subject">
+                                      <option disabled="disabled" selected="selected">إختار الولاية</option>
+                                      <option *ngFor="let region of regions">{{region}}</option>
+
+                                  </select>
+                                  <div class="select-dropdown"></div>
+                              </div>
+                          </div>
+                      </div> -->
+                      <br>
+                      <div class="form-row">
+                        <div class="name">الولاية</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select  style="margin-right: 180px;" class="select-css" (change)="onChange($event.target.value)" formControlName="region" name="subject">
+                                        <option disabled="disabled" selected="selected">إختار الولاية</option>
+                                        
+                                        <option *ngFor="let region of regions">{{region}}</option>    
+                                      
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                  <br>
+                  <div class="form-row">
+                    <div class="name">المعتمدية</div>
+                    <div class="value">
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select  style="margin-right: 180px;" class="select-css" formControlName="villa" name="subject">
+                                    <option disabled="disabled" selected="selected">إختار المعتمدية</option>
+                                    
+                                    <option  [ngValue]="v" *ngFor="let v of ville">{{v}}</option>
+
+                                  
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                      <div style="text-align: center;">  معلومات تخص دبوسة الأكسيجين</div><br>
+                      <div class="form-row">
+                        <div class="name">السعة باللتر (capacité en litre)</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input formControlName="capacite"  class="input--style-5" type="email" name="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="name">عدد القارورات (quantité)</div>
+                      <div class="value">
+                          <div class="input-group">
+                              <input formControlName="qte"  class="input--style-5" type="email" name="email">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="name">الموديل<br> (modele)</div>
+                    <div class="value">
+                        <div class="input-group">
+                            <input formControlName="model"  class="input--style-5" type="email" name="email">
+                        </div>
+                    </div>
+                </div>
+                        <div style="text-align: center;">
+                            <button class="btn btn--radius-2 btn--red" type="submit">تسجيل</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
