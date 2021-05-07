@@ -8,6 +8,5 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button   class="btn btn-danger" mat-button (click)="onNoClick()">Exit</button>
-  <button  class="btn btn-primary"  mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Rapporter</button>
+  <button  class="btn btn-primary"  mat-button [mat-dialog-close]="data.animal" (click)="test()" cdkFocusInitial>Rapporter</button>
 </div>

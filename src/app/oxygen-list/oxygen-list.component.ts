@@ -43,8 +43,9 @@ export class OxygenListComponent implements OnInit {
   
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
-        alert("report reived thanks !")
+       
         this.animal = result;
+        
       });
     }
   ngOnInit(): void {

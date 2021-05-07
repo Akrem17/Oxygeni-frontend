@@ -33,7 +33,7 @@
                             <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].capacite}} litres</td>
 <!--                             <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].quantite}} concentrateurs</td>
  -->                            <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].modele}} </td>
-                            <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].prix}} dt</td>
+                            <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].prix}}<span *ngIf="d.oxygenes[0].prix"> dt</span> </td>
                             <td *ngIf="d.oxygenes.length>0">{{d.tel}} </td>
                             <td *ngIf="d.oxygenes.length>0 && ville=='إختار المعتمدية'">{{d.ville}} </td>
 

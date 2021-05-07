@@ -14,7 +14,12 @@ export class DialogOverviewExampleDialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  test(){
+    alert("report reived thanks !") 
+   }
   onNoClick(): void {
+
     this.dialogRef.close();
   }
 
