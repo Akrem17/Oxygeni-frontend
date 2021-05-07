@@ -7,9 +7,7 @@
                 </div>
                 
                 <div class="card-body">
-                    <div class="alert alert-danger" role="alert">
-                        This is a danger alert—check it out!
-                      </div>
+                    
                   <div style="text-align: center;"> معلومات تخص المالك</div><br>
                     <form  [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()">
                         <div class="form-row m-b-55">
@@ -132,8 +130,13 @@
                     </div>
                 </div>
                         <div style="text-align: center;">
-                            <button class="btn btn--radius-2 btn--red" type="submit">تسجيل</button>
+                            <button *ngIf="!showSpinner" class="btn btn--radius-2 btn--red" type="submit">تسجيل</button>
+                            <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                              </button>
                         </div>
+
                     </form>
                 </div>
             </div>

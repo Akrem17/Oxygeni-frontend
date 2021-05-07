@@ -14,6 +14,7 @@ export class CherherOxygenComponent implements OnInit {
   OxygenForm: FormGroup;
   regions:string[];
   ville:string[];
+  showSpinner:boolean;
   constructor(private fb: FormBuilder,private sub :SubdivisionService,
     private oxygenservice:OxygenService,private router: Router,
   ) { 
@@ -44,11 +45,21 @@ export class CherherOxygenComponent implements OnInit {
 
     }else{
 
-  
+      this.showSpinner = true;
     this.oxygenservice.getOxygenByRegionAndVille(this.OxygenForm.value.region,this.OxygenForm.value.villa).subscribe(res=>{
       console.log(res)
       this.router.navigate(['/list',this.OxygenForm.value.region,this.OxygenForm.value.villa]);
-    })
+    },(err=>{
+      this.showSpinner = false;
+      console.log(err);
+      Swal.fire({
+        title: 'خطأ!',
+        text: err,
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+
+    }))
   }
   }
 

@@ -6,6 +6,7 @@ import { Users } from '../shared/models/user';
 import { OxygenService } from '../shared/service/oxygen.service';
 import { SubdivisionService } from '../shared/service/subdivision.service';
 import { UserService } from '../shared/service/user.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-add-oxygen',
@@ -18,6 +19,7 @@ export class AddOxygenComponent implements OnInit {
   user:Users;
   regions:string[];
   ville:string[];
+  showSpinner:boolean=false;
   constructor(private fb: FormBuilder, private userService :UserService,
      private oxygenservice:OxygenService,private sub :SubdivisionService
      ,private router: Router) { 
@@ -62,6 +64,7 @@ export class AddOxygenComponent implements OnInit {
     this.user.ville=this.addOxygenForm.value.villa;
     console.log(this.user)
     this.userService.addUser(this.user).subscribe(res=>{
+      this.showSpinner=true;
       //@ts-ignore
       this.oxygen.user=res.data.newDoc._id;
       this.oxygen.capacite=this.addOxygenForm.value.capacite;
@@ -75,6 +78,14 @@ export class AddOxygenComponent implements OnInit {
         this.router.navigate(['/list', this.user.region, this.user.ville]);
 
       })
-    })
+    },(err=>{
+      console.log(err);
+      Swal.fire({
+        title: 'خطأ!',
+       
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+    }))
   }
 }
