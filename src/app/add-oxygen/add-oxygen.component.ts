@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Oxygen } from '../shared/models/oxygen';
 import { Users } from '../shared/models/user';
@@ -27,15 +27,22 @@ export class AddOxygenComponent implements OnInit {
     this.user=new Users();
     this.oxygen=new Oxygen();
   }
+  
+ ValidatePhone(control: AbstractControl): {[key: string]: any} | null  {
+  if (control.value && control.value == 'إختار المعتمدية' ||control.value == 'إختار الولاية' ) {
+    return { 'ZoneInvalid': true };
+  }
+  return null;
+}
   createForm() {
     this.addOxygenForm = this.fb.group({
       firstname: '',
       lastname: '',
-      telnum: '',
+      telnum:  new FormControl('',  [Validators.required]),
       email: '',
-      villa: new FormControl('إختار المعتمدية'),
-      region: new FormControl('إختار الولاية'),
-      capacite: '',
+      villa: new FormControl('إختار المعتمدية',[this.ValidatePhone]),
+      region: new FormControl('إختار الولاية',[Validators.required]),
+      capacite: new FormControl('',  [Validators.required]),
       qte:'',
       modele:'',
       prix:''
@@ -77,8 +84,14 @@ export class AddOxygenComponent implements OnInit {
         console.log(res)
         this.router.navigate(['/list', this.user.region, this.user.ville]);
 
+      },(err)=>{
+        this.showSpinner=false;
+
+        console.log(err)
       })
     },(err=>{
+      this.showSpinner=false;
+
       console.log(err);
       Swal.fire({
         title: 'خطأ!',

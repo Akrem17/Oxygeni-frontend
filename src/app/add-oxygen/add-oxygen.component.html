@@ -3,7 +3,7 @@
         <div  class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">بش نعاون بدبوسة أكسيجين</h2>
+                    <h2 class="title">بش نعاون بماكينة أكسيجين</h2>
                 </div>
                 
                 <div class="card-body">
@@ -39,12 +39,19 @@
                             </div>
                         </div>
                         <div class="form-row">
-                          <div class="name">رقم الهاتف</div>
+                          <div class="name">*رقم الهاتف</div>
                           <div class="value">
                               <div class="input-group">
                                   <input formControlName="telnum"  class="input--style-5" type="email" name="email">
                               </div>
+                              <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
+                                <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
+                                    tel is required.
+                              </div>
+                            </div>
                           </div>
+                          
+
                       </div>
        <!--                <div class="name">الولاية</div>
                       <div class="value">
@@ -61,7 +68,7 @@
                       </div> -->
                       <br>
                       <div class="form-row">
-                        <div class="name">الولاية</div>
+                        <div class="name">*الولاية</div>
                         <div class="value">
                             <div class="input-group">
                                 <div class="rs-select2 js-select-simple select--no-search">
@@ -79,7 +86,7 @@
                  
                   <br>
                   <div class="form-row">
-                    <div class="name">المعتمدية</div>
+                    <div class="name">*المعتمدية</div>
                     <div class="value">
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
@@ -90,6 +97,7 @@
 
                                   
                                 </select>
+                                
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
@@ -98,15 +106,20 @@
              
                       <div style="text-align: center;">  معلومات تخص دبوسة الأكسيجين</div><br>
                       <div class="form-row">
-                        <div class="name">السعة باللتر <br> (capacité en litre)</div>
+                        <div class="name">*السعة باللتر <br> (capacité en litre)</div>
                         <div class="value">
                             <div class="input-group">
                                 <input formControlName="capacite"  class="input--style-5" type="email" name="email">
                             </div>
+                            <div *ngIf="addOxygenForm.controls['capacite'].invalid && (addOxygenForm.controls['capacite'].dirty || addOxygenForm.controls['capacite'].touched)" class="alert alert-danger">
+                                <div *ngIf="addOxygenForm.controls['capacite'].errors.required">
+                                    capacite is required.
+                              </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-row">
-                      <div class="name">عدد القارورات (quantité)</div>
+                      <div class="name">عدد الماكينات (quantité)</div>
                       <div class="value">
                           <div class="input-group">
                               <input formControlName="qte"  class="input--style-5" type="email" name="email">
@@ -130,7 +143,7 @@
                     </div>
                 </div>
                         <div style="text-align: center;">
-                            <button *ngIf="!showSpinner" class="btn btn--radius-2 btn--red" type="submit">تسجيل</button>
+                            <button  [disabled]="!addOxygenForm.valid" *ngIf="!showSpinner" class="btn btn--radius-2 btn--red" type="submit">تسجيل</button>
                             <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 Loading...

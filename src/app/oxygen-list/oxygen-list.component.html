@@ -4,11 +4,13 @@
         <div  class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">{{ville}}</h2>
+                    <h2 *ngIf="ville != 'إختار المعتمدية'"class="title">{{ville}}</h2>
+                    <h2 *ngIf="ville == 'إختار المعتمدية'"class="title">{{region}}</h2>
+
                 </div>
                 
                 <div class="card-body">
-                    <div class="container">
+                    <div class="container" *ngIf="data.length>0">
                         <div class="row">
                             <div class="col-md-3"></div>
                     <table class="table">
@@ -20,19 +22,22 @@
  -->                            <th scope="col">Modele</th>
                             <th scope="col">Prix/nuit</th>
                             <th scope="col">Tel</th>
+                            <th scope="col" *ngIf="ville=='إختار المعتمدية'">Ville</th>
                             <th scope="col"></th>
 
                           </tr>
                         </thead>
                         <tbody>
-                          <tr  *ngFor="let d of data; let i = index">
+                          <tr  *ngFor="let d of data; let i = index" >
                             <th *ngIf="d.oxygenes.length>0" scope="row">{{i+1}}</th>
                             <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].capacite}} litres</td>
 <!--                             <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].quantite}} concentrateurs</td>
  -->                            <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].modele}} </td>
                             <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].prix}} dt</td>
                             <td *ngIf="d.oxygenes.length>0">{{d.tel}} </td>
-                            <td *ngIf="d.oxygenes.length>0"><button  matTooltip="Rapporter" ><i  class="fas fa-flag"></i> </button></td>
+                            <td *ngIf="d.oxygenes.length>0 && ville=='إختار المعتمدية'">{{d.ville}} </td>
+
+                            <td *ngIf="d.oxygenes.length>0"><button  matTooltip="Rapporter"  mat-raised-button (click)="openDialog(d._id)" ><i  class="fas fa-flag"></i> </button></td>
 
                             
                           </tr>
@@ -45,7 +50,10 @@
                   </div>
                     </div>
                     </div>
-               
+               <div style="text-align: center;" *ngIf="data.length==0">
+                <h1>  للأسف ما فماش في البلاصة هذي <br> شوف حسب الولاية الكل وإلا زيد ماكينة أكسيجين <br><a href="ajouter">من هنا</a> </h1>
+
+               </div>
                 </div>
                 
             </div>
@@ -56,4 +64,13 @@
         </div>
     </div>
 
-  
+    <!-- Button trigger modal -->
+    <ol>
+      <li>
+        
+      </li>
+      <li>
+        <button>Pick one</button>
+      </li>
+   
+    </ol>

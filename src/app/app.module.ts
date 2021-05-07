@@ -18,6 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogOverviewExampleDialogComponent } from './oxygen-list/dialog-overview-example-dialog/dialog-overview-example-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     HomeComponent,
     CherherOxygenComponent,
     OxygenListComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    DialogOverviewExampleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
     MatFormFieldModule ,
     MatIconModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

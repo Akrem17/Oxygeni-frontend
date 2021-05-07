@@ -46,7 +46,20 @@ export class CherherOxygenComponent implements OnInit {
     }
     else if(this.OxygenForm.value.region!="إختار الولاية" && this.OxygenForm.value.villa=="إختار المعتمدية"){
 
-      alert("hiii")
+      this.showSpinner = true;
+      this.oxygenservice.getOxygenByRegion(this.OxygenForm.value.region).subscribe(res=>{
+        console.log(res)
+        this.router.navigate(['/list',this.OxygenForm.value.region,this.OxygenForm.value.villa]);
+            },(err=>{
+              this.showSpinner = false;
+              console.log(err);
+                    Swal.fire({
+                      title: 'خطأ!',
+                      text: err,
+                      icon: 'error',
+                      confirmButtonText: 'Cool'
+                    })
+            }))
     }
     else{
 
