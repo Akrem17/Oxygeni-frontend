@@ -1,0 +1,33 @@
+<br><br>
+<div class="container">
+    <div class="form">
+        <div class="contact-info">
+            <h3 class="title">Rentrons en contact</h3>
+            <p class="text"> Contactez-nous avec les détails suivants. et remplissez le formulaire avec les détails. </p>
+            <div class="info">
+                <div class="social-information"> <i class="fa fa-map-marker"></i>
+                    <p>Sousse,Tunisise</p>
+                </div>
+                <div class="social-information"> <i class="fa fa-envelope-o"></i>
+                    <p>akremhammami@outlook.com</p>
+                </div>
+                <div class="social-information"> <i class="fa fa-mobile-phone"></i>
+                    <p>+216 28274222</p>
+                </div>
+            </div>
+            <div class="social-media">
+                <p>Connecte-toi avec nous :</p>
+                <div class="social-icons"> <a href="#"> <i class="fa fa-facebook-f"></i> </a> <a href="#"> <i class="fa fa-twitter"></i> </a> <a href="#"> <i class="fa fa-instagram"></i> </a> <a href="#"> <i class="fa fa-linkedin"></i> </a> </div>
+            </div>
+        </div>
+        <div class="contact-info-form"> <span class="circle one"></span> <span class="circle two"></span>
+            <form   [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()"  autocomplete="off">
+                <h3 class="title">Contactez-nous</h3>
+                <div class="social-input-containers"> <input type="text" formControlName="name" name="name" class="input" placeholder="Nom" /> </div>
+                <div class="social-input-containers"> <input type="email" formControlName="email" name="email" class="input" placeholder="Email" /> </div>
+                <div class="social-input-containers"> <input type="tel" formControlName="phone" name="phone" class="input" placeholder="Tel" /> </div>
+                <div class="social-input-containers textarea"> <textarea formControlName="message" name="message" class="input" placeholder="Message"></textarea> </div> <input type="submit" value="Envoyer" class="btn" />
+            </form>
+        </div>
+    </div>
+</div>

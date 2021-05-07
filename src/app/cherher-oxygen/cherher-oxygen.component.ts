@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OxygenService } from '../shared/service/oxygen.service';
 import { SubdivisionService } from '../shared/service/subdivision.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-cherher-oxygen',
@@ -14,7 +15,8 @@ export class CherherOxygenComponent implements OnInit {
   regions:string[];
   ville:string[];
   constructor(private fb: FormBuilder,private sub :SubdivisionService,
-    private oxygenservice:OxygenService,private router: Router) { 
+    private oxygenservice:OxygenService,private router: Router,
+  ) { 
     this.createForm();
 
   }
@@ -32,11 +34,22 @@ export class CherherOxygenComponent implements OnInit {
     });
   }
   onSubmit() {console.log(this.OxygenForm.value)
-    
+    if(this.OxygenForm.value.region=="إختار الولاية" && this.OxygenForm.value.villa=="إختار المعتمدية"){
+      Swal.fire({
+        title: 'خطأ!',
+        text: 'أختار بلاصة ',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
+
+    }else{
+
+  
     this.oxygenservice.getOxygenByRegionAndVille(this.OxygenForm.value.region,this.OxygenForm.value.villa).subscribe(res=>{
       console.log(res)
       this.router.navigate(['/list',this.OxygenForm.value.region,this.OxygenForm.value.villa]);
     })
+  }
   }
 
   onChange(e){

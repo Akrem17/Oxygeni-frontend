@@ -17,6 +17,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AddOxygenComponent,
     HomeComponent,
     CherherOxygenComponent,
-    OxygenListComponent
+    OxygenListComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
