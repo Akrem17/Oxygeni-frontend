@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OxygenService } from '../shared/service/oxygen.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-oxygen-list',
   templateUrl: './oxygen-list.component.html',
@@ -15,14 +16,19 @@ export class OxygenListComponent implements OnInit {
    model:string;
    contact:string;
    data:any[];
-  constructor(private router :Router,private route: ActivatedRoute,private oxygenservice : OxygenService) { }
 
+   totalRecords:number=50
+   page:number=1;
+   itemPerPage:number=5
+
+  constructor(private router :Router,private route: ActivatedRoute,private oxygenservice : OxygenService) { }
+  
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
       this.region = params['region'];
       this.ville = params['ville'];
 
-      this.oxygenservice.getOxygenByRegionAndVille(this.region,this.ville).subscribe(res=>{
+      this.oxygenservice.getOxygenByRegionAndVille(this.region,this.ville,this.page,this.itemPerPage).subscribe(res=>{
         this.data=res.data.docs
         console.log(this.data)
 
@@ -30,5 +36,19 @@ export class OxygenListComponent implements OnInit {
    });
   
   }
+  onChangePage(event:PageEvent){
+    this.page = event.pageIndex+1
+    this.itemPerPage= event.pageSize
 
+    this.oxygenservice.getOxygenByRegionAndVille(this.region,this.ville,this.page,this.itemPerPage).subscribe(res=>{
+      this.data=res.data.docs
+      this.totalRecords=res.total
+
+    })
+ 
+       
+    
+  }
+  
+   
 }

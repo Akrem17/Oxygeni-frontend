@@ -761,4 +761,7 @@
       padding-bottom: 50px;
     }
   }
-  
+  mat-paginator {
+    display: flex;
+    justify-content: center;
+  }

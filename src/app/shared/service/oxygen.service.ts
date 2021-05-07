@@ -16,7 +16,7 @@ export class OxygenService {
   getAllOxygen(page?,limit?):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes?page="+page+"&"+"limit="+limit)}
   getOneOxygen(id):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes/"+id)}
   addOxygen(oxygen: Oxygen): Observable<Oxygen> {return this.http.post<Oxygen>(this.url+"/oxygenes/",oxygen)}
-  getOxygenByRegionAndVille(region,ville):Observable<any>{return this.http.get(this.url+"/oxygenes/"+region+"/"+ville)}
+  getOxygenByRegionAndVille(region,ville,page?,limit?):Observable<any>{return this.http.get(this.url+"/oxygenes/"+region+"/"+ville+"?page="+page+"&"+"limit="+limit)}
 }
 
 /* 
