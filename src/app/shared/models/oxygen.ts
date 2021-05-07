@@ -5,6 +5,7 @@ export class Oxygen{
     fabriquant :string;
     capacite:string;
     quantite:string;
+    prix:string;
     user:string;
 
 

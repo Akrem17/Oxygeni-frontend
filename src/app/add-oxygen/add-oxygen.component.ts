@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Oxygen } from '../shared/models/oxygen';
 import { Users } from '../shared/models/user';
 import { OxygenService } from '../shared/service/oxygen.service';
@@ -18,7 +19,8 @@ export class AddOxygenComponent implements OnInit {
   regions:string[];
   ville:string[];
   constructor(private fb: FormBuilder, private userService :UserService,
-     private oxygenservice:OxygenService,private sub :SubdivisionService) { 
+     private oxygenservice:OxygenService,private sub :SubdivisionService
+     ,private router: Router) { 
     this.createForm();
     this.user=new Users();
     this.oxygen=new Oxygen();
@@ -27,13 +29,14 @@ export class AddOxygenComponent implements OnInit {
     this.addOxygenForm = this.fb.group({
       firstname: '',
       lastname: '',
-      telnum: 0,
+      telnum: '',
       email: '',
       villa: new FormControl('إختار المعتمدية'),
       region: new FormControl('إختار الولاية'),
       capacite: '',
       qte:'',
-      model:''
+      modele:'',
+      prix:''
     });
   }
 
@@ -62,11 +65,15 @@ export class AddOxygenComponent implements OnInit {
       //@ts-ignore
       this.oxygen.user=res.data.newDoc._id;
       this.oxygen.capacite=this.addOxygenForm.value.capacite;
-      this.oxygen.modele=this.addOxygenForm.value.model;
+      this.oxygen.modele=this.addOxygenForm.value.modele;
       this.oxygen.quantite=this.addOxygenForm.value.qte;
       this.oxygen.fabriquant=null;
+      this.oxygen.prix=this.addOxygenForm.value.prix;
+
       this.oxygenservice.addOxygen(this.oxygen).subscribe(res=>{
         console.log(res)
+        this.router.navigate(['/list', this.user.region, this.user.ville]);
+
       })
     })
   }
