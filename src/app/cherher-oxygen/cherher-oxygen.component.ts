@@ -43,7 +43,12 @@ export class CherherOxygenComponent implements OnInit {
         confirmButtonText: 'Cool'
       })
 
-    }else{
+    }
+    else if(this.OxygenForm.value.region!="إختار الولاية" && this.OxygenForm.value.villa=="إختار المعتمدية"){
+
+      alert("hiii")
+    }
+    else{
 
       this.showSpinner = true;
     this.oxygenservice.getOxygenByRegionAndVille(this.OxygenForm.value.region,this.OxygenForm.value.villa).subscribe(res=>{
