@@ -7,6 +7,9 @@ export class Oxygen{
     quantite:string;
     prix:string;
     user:string;
+    region:string;
+    ville:string;
+    tel:string;
 
 
 }

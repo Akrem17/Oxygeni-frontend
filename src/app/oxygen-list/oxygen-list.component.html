@@ -9,8 +9,8 @@
 
                 </div>
                 
-                <div class="card-body">
-                    <div class="container" *ngIf="data.length>0">
+                <div class="card-body"  *ngIf="data">
+                    <div class="container" *ngIf="data.docs.length>0">
                         <div class="row">
                             <div class="col-md-3"></div>
                     <table class="table">
@@ -28,16 +28,16 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr  *ngFor="let d of data; let i = index" >
-                            <th *ngIf="d.oxygenes.length>0" scope="row">{{i+1}}</th>
-                            <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].capacite}} litres</td>
-<!--                             <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].quantite}} concentrateurs</td>
- -->                            <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].modele}} </td>
-                            <td *ngIf="d.oxygenes.length>0">{{d.oxygenes[0].prix}}<span *ngIf="d.oxygenes[0].prix"> dt</span> </td>
-                            <td *ngIf="d.oxygenes.length>0">{{d.tel}} </td>
-                            <td *ngIf="d.oxygenes.length>0 && ville=='إختار المعتمدية'">{{d.ville}} </td>
+                          <tr  *ngFor="let d of data.docs; let i = index" >
+                            <th *ngIf="d" scope="row">{{i+1}}</th>
+                            <td *ngIf="d">{{d.capacite}} litres</td>
+<!--                             <td *ngIf="d.length>0">{{d..quantite}} concentrateurs</td>
+ -->                            <td *ngIf="d">{{d.modele}} </td>
+                            <td *ngIf="d">{{d.prix}}<span *ngIf="d.prix"> dt</span> </td>
+                            <td *ngIf="d">{{d.tel}} </td>
+                            <td *ngIf="d && ville=='إختار المعتمدية'">{{d.ville}} </td>
 
-                            <td *ngIf="d.oxygenes.length>0"><button  matTooltip="Rapporter"  mat-raised-button (click)="openDialog(d._id)" ><i  class="fas fa-flag"></i> </button></td>
+                            <td *ngIf="d.length>0"><button  matTooltip="Rapporter"  mat-raised-button (click)="openDialog(d._id)" ><i  class="fas fa-flag"></i> </button></td>
 
                             
                           </tr>

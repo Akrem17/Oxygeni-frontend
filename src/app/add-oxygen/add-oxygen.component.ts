@@ -8,6 +8,7 @@ import { SubdivisionService } from '../shared/service/subdivision.service';
 import { UserService } from '../shared/service/user.service';
 import Swal from 'sweetalert2'
 import { HttpErrorResponse } from '@angular/common/http';
+import { AthService } from '../shared/service/ath.service';
 
 @Component({
   selector: 'app-add-oxygen',
@@ -23,7 +24,7 @@ export class AddOxygenComponent implements OnInit {
   showSpinner:boolean=false;
   constructor(private fb: FormBuilder, private userService :UserService,
      private oxygenservice:OxygenService,private sub :SubdivisionService
-     ,private router: Router) { 
+     ,private router: Router,private auth:AthService) { 
     this.createForm();
     this.user=new Users();
     this.oxygen=new Oxygen();
@@ -37,18 +38,16 @@ export class AddOxygenComponent implements OnInit {
 }
   createForm() {
     this.addOxygenForm = this.fb.group({
-      firstname: '',
-      lastname: '',
+    
       telnum:  new FormControl('',  [Validators.required,Validators.minLength(8)]),
-      email: '',
+     
       villa: new FormControl('إختار المعتمدية',[this.ValidatePhone]),
       region: new FormControl('إختار الولاية',[Validators.required]),
       capacite: new FormControl('',  [Validators.required]),
       qte:'',
       modele:'',
-      prix:'',
-      password:'',
-      passwordconfirm:''
+      prix:''
+    
     });
   }
 
@@ -68,56 +67,65 @@ export class AddOxygenComponent implements OnInit {
 
     console.log(this.addOxygenForm.value);
 
-    this.user.nom=this.addOxygenForm.value.firstname;
-    this.user.prenom=this.addOxygenForm.value.lastname;
-    this.user.region=this.addOxygenForm.value.region;
-    this.user.tel=this.addOxygenForm.value.telnum;
-    this.user.ville=this.addOxygenForm.value.villa;
-    this.user.email=this.addOxygenForm.value.email;
-    this.user.password=this.addOxygenForm.value.password;
-    this.user.passwordConfirm=this.addOxygenForm.value.passwordconfirm;
+    
+
 
     this.showSpinner=true;
+    if(this.auth.loggedIn() && this.auth.IsThereUser()){
+      //traitement
+     var  userid=localStorage.getItem('userId');
 
-    console.log(this.user)
-    this.userService.addUser(this.user).subscribe(res=>{
-      this.showSpinner=true;
-      //@ts-ignore
-      this.oxygen.user=res.data.newDoc._id;
-      this.oxygen.capacite=this.addOxygenForm.value.capacite;
-      this.oxygen.modele=this.addOxygenForm.value.modele;
-      this.oxygen.quantite=this.addOxygenForm.value.qte;
-      this.oxygen.fabriquant=null;
-      this.oxygen.prix=this.addOxygenForm.value.prix;
+      this.userService.getOneUser(userid).subscribe(res=>{
+        //traitement
+        console.log(res);
 
-      this.oxygenservice.addOxygen(this.oxygen).subscribe(res=>{
-        console.log(res)
-        this.router.navigate(['/list', this.user.region, this.user.ville]);
+        this.oxygen.user=userid;
+        this.oxygen.capacite=this.addOxygenForm.value.capacite;
+        this.oxygen.modele=this.addOxygenForm.value.modele;
+
+        this.oxygen.prix=this.addOxygenForm.value.prix;
+        this.oxygen.quantite=this.addOxygenForm.value.qte;
+        this.oxygen.region=this.addOxygenForm.value.region;
+
+        this.oxygen.tel=this.addOxygenForm.value.telnum;
+        this.oxygen.ville=this.addOxygenForm.value.villa;
+       
+        this.oxygenservice.addOxygen(this.oxygen).subscribe(res=>{
+          console.log(res)
+          Swal.fire({
+            title: 'Ajouter avec scccess!',
+           
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
+          this.router.navigate(['/list', this.oxygen.region, this.oxygen.ville]);
+
+
+        },err=>{
+          this.showSpinner=false;
+          if (err instanceof HttpErrorResponse){
+            if(err.status===403){
+              this.auth.logout();
+                      }
+          }
+          console.log(err)
+
+        })
 
       },(err)=>{
-
         this.showSpinner=false;
         if (err instanceof HttpErrorResponse){
           if(err.status===403){
-            this.router.navigate(['/login']);
-          }
+            this.auth.logout();
+                    }
         }
         console.log(err)
+      
       })
-    },(err=>{
-      this.showSpinner=false;
- if (err instanceof HttpErrorResponse){
-          if(err.status===403){
-            this.router.navigate(['/login']);
-          }
-        }
-      console.log(err);
-      Swal.fire({
-        title: 'خطأ!',
-       
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      })
-    }))
+    }else{
+
+      this.auth.logout();
+    }
+    
   }
 }

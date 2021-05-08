@@ -66,7 +66,7 @@ export class OxygenListComponent implements OnInit {
       
         this.oxygenservice.getOxygenByRegion(this.region,this.page,this.itemPerPage).subscribe(res=>{
       
-          this.data=res.data.docs
+          this.data=res.data
               },(err=>{
               
                 console.log(err);
@@ -81,7 +81,8 @@ export class OxygenListComponent implements OnInit {
       else{
   
         this.oxygenservice.getOxygenByRegionAndVille(this.region,this.ville,this.page,this.itemPerPage).subscribe(res=>{
-          this.data=res.data.docs
+          this.data=res.data
+          
           console.log(this.data)
   
         })

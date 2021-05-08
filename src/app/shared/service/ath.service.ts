@@ -14,17 +14,24 @@ export class AthService {
     console.log(this.url)
   }
   login(email,password):Observable<any[]>{return this.http.post<any[]>(this.url+"/login",{email,password})}
-  
+  signup (nom,prenom,email,password,passwordConfirm):Observable<any[]>{return this.http.post<any[]>(this.url+"/signup",{nom,prenom,email,password,passwordConfirm})}
+
+ 
   loggedIn(){
     return !!localStorage.getItem('token');
     
   }
   logout(){
      localStorage.clear();
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
   }
   getToken(){
     return localStorage.getItem('token');
+  }
+
+  IsThereUser(){
+    return !!localStorage.getItem('userId');
+
   }
 }
 
