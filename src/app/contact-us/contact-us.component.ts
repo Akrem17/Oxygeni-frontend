@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-contact-us',
@@ -18,16 +19,24 @@ export class ContactUsComponent implements OnInit {
   }
   createForm() {
     this.addOxygenForm = this.fb.group({
-      name: '',
-      email: '',
+      name:  new FormControl('',  [Validators.required]),
+      email:  new FormControl('',  [Validators.required]),
       phone: '',
-      message:''
+      message: new FormControl('',  [Validators.required]),
       
     });
   }
 
 
   onSubmit() {
-    console.log(this.addOxygenForm.value); 
+    
+    console.log(this.addOxygenForm.value);
+    Swal.fire({
+      title: 'Email sent seccessfully !',
+     
+      icon: 'success',
+      confirmButtonText: 'Cool'
+    }) 
+
   }
 }

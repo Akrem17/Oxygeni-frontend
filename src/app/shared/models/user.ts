@@ -4,6 +4,7 @@ prenom:string;
 tel:string;
 region:string;
 ville:string;
-
-
+email:string;
+password:string;
+passwordConfirm:string;
 }

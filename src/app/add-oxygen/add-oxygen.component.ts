@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Oxygen } from '../shared/models/oxygen';
 import { Users } from '../shared/models/user';
@@ -7,6 +7,7 @@ import { OxygenService } from '../shared/service/oxygen.service';
 import { SubdivisionService } from '../shared/service/subdivision.service';
 import { UserService } from '../shared/service/user.service';
 import Swal from 'sweetalert2'
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-oxygen',
@@ -38,14 +39,16 @@ export class AddOxygenComponent implements OnInit {
     this.addOxygenForm = this.fb.group({
       firstname: '',
       lastname: '',
-      telnum:  new FormControl('',  [Validators.required]),
+      telnum:  new FormControl('',  [Validators.required,Validators.minLength(8)]),
       email: '',
       villa: new FormControl('إختار المعتمدية',[this.ValidatePhone]),
       region: new FormControl('إختار الولاية',[Validators.required]),
       capacite: new FormControl('',  [Validators.required]),
       qte:'',
       modele:'',
-      prix:''
+      prix:'',
+      password:'',
+      passwordconfirm:''
     });
   }
 
@@ -62,6 +65,7 @@ export class AddOxygenComponent implements OnInit {
 
   
   onSubmit() {
+
     console.log(this.addOxygenForm.value);
 
     this.user.nom=this.addOxygenForm.value.firstname;
@@ -69,6 +73,12 @@ export class AddOxygenComponent implements OnInit {
     this.user.region=this.addOxygenForm.value.region;
     this.user.tel=this.addOxygenForm.value.telnum;
     this.user.ville=this.addOxygenForm.value.villa;
+    this.user.email=this.addOxygenForm.value.email;
+    this.user.password=this.addOxygenForm.value.password;
+    this.user.passwordConfirm=this.addOxygenForm.value.passwordconfirm;
+
+    this.showSpinner=true;
+
     console.log(this.user)
     this.userService.addUser(this.user).subscribe(res=>{
       this.showSpinner=true;
@@ -85,13 +95,22 @@ export class AddOxygenComponent implements OnInit {
         this.router.navigate(['/list', this.user.region, this.user.ville]);
 
       },(err)=>{
-        this.showSpinner=false;
 
+        this.showSpinner=false;
+        if (err instanceof HttpErrorResponse){
+          if(err.status===403){
+            this.router.navigate(['/login']);
+          }
+        }
         console.log(err)
       })
     },(err=>{
       this.showSpinner=false;
-
+ if (err instanceof HttpErrorResponse){
+          if(err.status===403){
+            this.router.navigate(['/login']);
+          }
+        }
       console.log(err);
       Swal.fire({
         title: 'خطأ!',

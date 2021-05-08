@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { OxygenService } from '../shared/service/oxygen.service';
 import { SubdivisionService } from '../shared/service/subdivision.service';
 import Swal from 'sweetalert2'
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cherher-oxygen',
@@ -69,6 +70,11 @@ export class CherherOxygenComponent implements OnInit {
       this.router.navigate(['/list',this.OxygenForm.value.region,this.OxygenForm.value.villa]);
     },(err=>{
       this.showSpinner = false;
+      if (err instanceof HttpErrorResponse){
+        if(err.status===403){
+          this.router.navigate(['/login']);
+        }
+      }
       console.log(err);
       Swal.fire({
         title: 'خطأ!',

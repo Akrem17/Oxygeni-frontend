@@ -42,7 +42,7 @@
                           <div class="name">*رقم الهاتف</div>
                           <div class="value">
                               <div class="input-group">
-                                  <input formControlName="telnum"  class="input--style-5" type="email" name="email">
+                                  <input formControlName="telnum"  class="input--style-5" maxlength="8" minlength="8" type="number" name="email">
                               </div>
                               <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
                                 <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
@@ -53,6 +53,26 @@
                           
 
                       </div>
+                      <div class="form-row">
+                        <div class="name">*password</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input formControlName="password"  class="input--style-5" type="password" name="email">
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="name">*password confirm</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input formControlName="passwordconfirm"  class="input--style-5" type="password" name="email">
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
        <!--                <div class="name">الولاية</div>
                       <div class="value">
                           <div class="input-group">

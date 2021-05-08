@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AthService } from './shared/service/ath.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'oxygenCharity';
+  constructor(public  auth:AthService,private router:Router){
+
+  }
+
+ 
 }

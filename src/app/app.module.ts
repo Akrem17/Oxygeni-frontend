@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AddOxygenComponent } from './add-oxygen/add-oxygen.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CherherOxygenComponent } from './cherher-oxygen/cherher-oxygen.component';
 import { OxygenListComponent } from './oxygen-list/oxygen-list.component';
 import {MatTableModule} from '@angular/material/table';
@@ -20,6 +20,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogOverviewExampleDialogComponent } from './oxygen-list/dialog-overview-example-dialog/dialog-overview-example-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { UserService } from './shared/service/user.service';
+import { AthService } from './shared/service/ath.service';
+import { OxygenService } from './shared/service/oxygen.service';
+import { AuthInterceptor } from './shared/service/auth-interceptor';
+import { RouterModule } from '@angular/router';
+import { SingupComponent } from './singup/singup.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +37,9 @@ import { DialogOverviewExampleDialogComponent } from './oxygen-list/dialog-overv
     CherherOxygenComponent,
     OxygenListComponent,
     ContactUsComponent,
-    DialogOverviewExampleDialogComponent
+    DialogOverviewExampleDialogComponent,
+    LoginComponent,
+    SingupComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +54,14 @@ import { DialogOverviewExampleDialogComponent } from './oxygen-list/dialog-overv
     MatIconModule,
     MatInputModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    RouterModule
   ],
-  providers: [],
+  providers: [AuthGuard,UserService,AthService,OxygenService,
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
+
+  ],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
