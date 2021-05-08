@@ -37,7 +37,7 @@
                             <td *ngIf="d">{{d.tel}} </td>
                             <td *ngIf="d && ville=='إختار المعتمدية'">{{d.ville}} </td>
 
-                            <td *ngIf="d.length>0"><button  matTooltip="Rapporter"  mat-raised-button (click)="openDialog(d._id)" ><i  class="fas fa-flag"></i> </button></td>
+                            <td *ngIf="d"><button  matTooltip="Rapporter"  mat-raised-button (click)="openDialog(d._id)" ><i  class="fas fa-flag"></i> </button></td>
 
                             
                           </tr>
