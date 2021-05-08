@@ -7,6 +7,9 @@
 					<span class="login100-form-title">
 						 Signup
 					</span>
+					<div *ngIf="errormsg" class="alert alert-danger" role="alert">
+						{{errormsg}}
+				</div><br>
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input  formControlName="nom" class="input100" type="text" name="nom" placeholder="Nom">
 						<span class="focus-input100"></span>
@@ -46,14 +49,14 @@
 					
 					
 					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
+						<button  [disabled]="!addOxygenForm.valid" type="submit" class="login100-form-btn">
 							Signup
 						</button>
 					</div>
 
-				
+					<br>
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
+						<a class="txt2" href="/login">
 							Login
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>

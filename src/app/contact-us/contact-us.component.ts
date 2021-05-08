@@ -37,6 +37,6 @@ export class ContactUsComponent implements OnInit {
       icon: 'success',
       confirmButtonText: 'Cool'
     }) 
-
+    this.addOxygenForm.reset()
   }
 }

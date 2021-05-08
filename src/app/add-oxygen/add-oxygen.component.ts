@@ -89,29 +89,44 @@ export class AddOxygenComponent implements OnInit {
 
         this.oxygen.tel=this.addOxygenForm.value.telnum;
         this.oxygen.ville=this.addOxygenForm.value.villa;
-       
-        this.oxygenservice.addOxygen(this.oxygen).subscribe(res=>{
-          console.log(res)
-          Swal.fire({
-            title: 'Ajouter avec scccess!',
-           
-            icon: 'success',
-            confirmButtonText: 'Cool'
+
+          /* this.oxygenservice.getByAll(this.oxygen.capacite,this.oxygen.modele,this.oxygen.region,this.oxygen.tel,this.oxygen.ville).subscribe(res=>{
+
+            this.showSpinner=false;
+            console.log(res)
+              console.log("cette info de l'oxygen deja existe");
+              alert("cette info de l'oxygen deja existe");
+            throw "cette info de l'oxygen deja existe"
+
+          },(err)=>{ */
+
+            this.oxygenservice.addOxygen(this.oxygen).subscribe(res=>{
+              console.log(res)
+              Swal.fire({
+                title: 'Ajouter avec scccess!',
+               
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+              this.router.navigate(['/list', this.oxygen.region, this.oxygen.ville]);
+    
+    
+            },err=>{
+              this.showSpinner=false;
+              if (err instanceof HttpErrorResponse){
+                if(err.status===403){
+                  this.auth.logout();
+                          }
+              }
+              console.log(err)
+    
+            })
+
+/* 
           })
-          this.router.navigate(['/list', this.oxygen.region, this.oxygen.ville]);
-
-
-        },err=>{
-          this.showSpinner=false;
-          if (err instanceof HttpErrorResponse){
-            if(err.status===403){
-              this.auth.logout();
-                      }
-          }
-          console.log(err)
-
-        })
-
+ */
+       
+     
       },(err)=>{
         this.showSpinner=false;
         if (err instanceof HttpErrorResponse){

@@ -2,7 +2,9 @@
     <div class=" ">
 	<div class="limiter  ">
 		<div class="">
-			
+            <div *ngIf="errormsg" class="alert alert-danger" role="alert">
+                    {{errormsg}}
+            </div>
 				<form class="login100-form validate-form"  [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()" >
 					<span class="login100-form-title">
 						 Login
@@ -25,14 +27,14 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button type="submit" class="login100-form-btn">
+						<button   [disabled]="!addOxygenForm.valid" type="submit" class="login100-form-btn">
 							Login
 						</button>
 					</div>
-
+<br>
 				
 					<div class="text-center p-t-136">
-						<a class="txt2" href="#">
+						<a  class="txt2" href="/signup">
 							Create your Account
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>

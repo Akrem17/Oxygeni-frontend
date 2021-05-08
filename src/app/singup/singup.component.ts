@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,6 +13,7 @@ export class SingupComponent implements OnInit {
 
 
   addOxygenForm: FormGroup;
+  errormsg: string=null;
 
   constructor(private fb: FormBuilder,private authService:AthService,private router:Router) { 
 
@@ -49,6 +51,12 @@ export class SingupComponent implements OnInit {
 
       },(err)=>{
         console.log(err)
+
+        if (err instanceof HttpErrorResponse){
+          if(err.status===403){
+            this.errormsg=err.error.msg
+          }
+        }
       })
   }
 
