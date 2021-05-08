@@ -2,12 +2,12 @@
     <div class="container"><a class="navbar-brand logo" href="#">Oxygeni</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item" ><a class="nav-link active" href="" >Home</a></li>
-                <li class="nav-item"><a class="nav-link"   href="chercher" >Chercher une bouteille</a></li>
-                <li class="nav-item"><a class="nav-link" href="ajouter"  >Ajouter une bouteille</a></li>
-                <li class="nav-item"><a class="nav-link" href="contactus">Contacter nous</a></li>
-                <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link" href="login">Login</a></li>
-                <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link" href="signup">Signup</a></li>
+                <li class="nav-item" ><a class="nav-link " routerLink="/" >Home</a></li>
+                <li class="nav-item"><a class="nav-link"  routerLink="/chercher" >Chercher une bouteille</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/ajouter"  >Ajouter une bouteille</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/contactus">Contacter nous</a></li>
+                <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link"routerLink="/login">Login</a></li>
+                <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link"routerLink="/signup">Signup</a></li>
                 <li *ngIf="auth.loggedIn()" class="nav-item"><button class="nav-link" (click)="auth.logout()">Logout</button></li>
 
               </ul>
