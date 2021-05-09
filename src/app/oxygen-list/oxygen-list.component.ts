@@ -26,7 +26,7 @@ export class OxygenListComponent implements OnInit {
 
    totalRecords:number=50
    page:number=1;
-   itemPerPage:number=5
+   itemPerPage:number=10
 
    animal: string;
    name: string;
@@ -65,7 +65,8 @@ export class OxygenListComponent implements OnInit {
   
       
         this.oxygenservice.getOxygenByRegion(this.region,this.page,this.itemPerPage).subscribe(res=>{
-      
+               //@ts-ignore
+        this.totalRecords=res.total
           this.data=res.data
               },(err=>{
               
@@ -82,8 +83,9 @@ export class OxygenListComponent implements OnInit {
   
         this.oxygenservice.getOxygenByRegionAndVille(this.region,this.ville,this.page,this.itemPerPage).subscribe(res=>{
           this.data=res.data
+            //@ts-ignore
+        this.totalRecords=res.total 
           
-          console.log(this.data)
   
         })
     }
@@ -91,18 +93,16 @@ export class OxygenListComponent implements OnInit {
    });
   
   }
-  onChangePage(event:PageEvent){
-    console.log(event)
-    
-    if(event.previousPageIndex==1){
-      console.log("hi")
-      this.page = event.pageIndex
-    }else{
-      this.page = event.pageIndex+1
-    }
-   
-    this.itemPerPage= event.pageSize
-    if(this.region=="إختار الولاية" && this.ville=="إختار المعتمدية"){
+
+  
+  handlePageEvent(event: PageEvent) {
+    /*  this.length = event.length;
+     this.pageSize = event.pageSize;
+     this.pageIndex = event.pageIndex; */
+     this.totalRecords=event.length
+     this.itemPerPage=event.pageSize;
+     this.page=event.pageIndex
+     if(this.region=="إختار الولاية" && this.ville=="إختار المعتمدية"){
       Swal.fire({
         title: 'خطأ!',
         text: 'أختار بلاصة ',
@@ -114,11 +114,10 @@ export class OxygenListComponent implements OnInit {
     else if(this.region!="إختار الولاية" && this.ville=="إختار المعتمدية"){
 
     
-      this.oxygenservice.getOxygenByRegion(this.region,this.page,this.itemPerPage).subscribe(res=>{
-    
-        this.data=res.data.docs
-        this.totalRecords=res.total
-        console.log(this.data)
+      this.oxygenservice.getOxygenByRegion(this.region,this.page+1,this.itemPerPage).subscribe(res=>{
+        this.data=res.data
+       
+
             },(err=>{
             
               console.log(err);
@@ -132,15 +131,13 @@ export class OxygenListComponent implements OnInit {
     }
     else{
 
-      this.oxygenservice.getOxygenByRegionAndVille(this.region,this.ville,this.page,this.itemPerPage).subscribe(res=>{
-        this.data=res.data.docs
-        this.totalRecords=res.total
-        console.log(this.data)
+      this.oxygenservice.getOxygenByRegionAndVille(this.region,this.ville,this.page+1,this.itemPerPage).subscribe(res=>{
+        this.data=res.data
+
 
       })
   }
   
-       
     
   }
   

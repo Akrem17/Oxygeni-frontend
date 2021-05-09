@@ -46,8 +46,12 @@
                         
                       </table>
                    <div  style="text-align: center;">
-                    <mat-paginator [length]="totalRecords" [pageSize]=" " [pageSizeOptions]="[5, 10, 20,100,200]" showFirstLastButtons (page)="onChangePage($event)"></mat-paginator>
-                  </div>
+                    <mat-paginator [length]="totalRecords"
+                    [pageSize]="itemPerPage"
+                    [pageSizeOptions]="[10, 25, 100]"
+                    (page)="handlePageEvent($event)"
+                    >
+                       </mat-paginator>                  </div>
                     </div>
                     </div>
                <div style="text-align: center;" *ngIf="data.docs.length==0">

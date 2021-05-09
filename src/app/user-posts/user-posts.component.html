@@ -15,7 +15,7 @@
                 <table class="table">
                     <thead class="thead-dark">
                       <tr>
-                        <th scope="col">#</th>
+                 
                         <th scope="col">Capacité</th>
 <!--                             <th scope="col">Quantité</th>
 -->                            <th scope="col">Modele</th>
@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                       <tr   *ngFor="let d of data; let i=index;">
-                        <th scope="row">{{i+1}}</th>
+                    
                         <td > {{d.capacite}} litres</td>
                         <td >{{d.modele}} </td>
                         <td >{{d.prix}}<span *ngIf="d.prix"> dt</span> </td>
@@ -45,8 +45,14 @@
                     
                   </table>
                <div  style="text-align: center;">
-                <mat-paginator [length]="totalRecords" [pageSize]=" " [pageSizeOptions]="[5, 10, 20,100,200]" showFirstLastButtons (page)="onChangePage($event)"></mat-paginator>
-              </div>
+                <mat-paginator [length]="totalRecords"
+                [pageSize]="itemPerPage"
+                [pageSizeOptions]="[10, 25, 100]"
+                (page)="handlePageEvent($event)"
+                >
+                   </mat-paginator>
+                </div>
+          
                 </div>
                 </div>
            <div style="text-align: center;" *ngIf="!data" >

@@ -24,10 +24,11 @@ export class UserPostsComponent implements OnInit {
 
    totalRecords:number=50
    page:number=1;
-   itemPerPage:number=5
-
+   itemPerPage:number=10
+   pageEvent: PageEvent;
    animal: string;
    name: string;
+  userId: string;
   
    delete(itemId){
     console.log(itemId)
@@ -74,8 +75,10 @@ export class UserPostsComponent implements OnInit {
     }
   ngOnInit(): void {
     if(this.auth.IsThereUser){
-
-      this.oxygenservice.getAllOxygenByUser(this.auth.getUser()).subscribe(res=>{
+      this.userId=this.auth.getUser();
+      this.oxygenservice.getAllOxygenByUser(this.auth.getUser(),this.page,this.itemPerPage).subscribe(res=>{
+        //@ts-ignore
+        this.totalRecords=res.total
         console.log(this.auth.getUser())
         console.log(res)
         //@ts-ignore
@@ -93,29 +96,19 @@ export class UserPostsComponent implements OnInit {
     }
   
   }
-  onChangePage(event:PageEvent){
-    console.log(event)
-    
-    if(event.previousPageIndex==1){
-      console.log("hi")
-      this.page = event.pageIndex
-    }else{
-      this.page = event.pageIndex+1
-    }
-   
-    this.itemPerPage= event.pageSize
-    if(this.region=="إختار الولاية" && this.ville=="إختار المعتمدية"){
-      Swal.fire({
-        title: 'خطأ!',
-        text: 'أختار بلاصة ',
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      })
+  
+  handlePageEvent(event: PageEvent) {
+   /*  this.length = event.length;
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex; */
+    this.totalRecords=event.length
+    this.itemPerPage=event.pageSize;
+    this.page=event.pageIndex
+    this.oxygenservice.getAllOxygenByUser(this.userId,this.page+1,this.itemPerPage).subscribe(res=>{
+      //@ts-ignore
+      this.data=res.data.doc
 
-    }
-  
-    
+    })
   }
-  
    
 }
