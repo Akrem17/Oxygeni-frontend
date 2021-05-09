@@ -11,9 +11,9 @@
                 <div class="card-body">
                     
                     <form   [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()" >
-						<div *ngIf="errormsg" class="alert alert-danger" role="alert">
+						<div style="text-align: center;" *ngIf="errormsg" class="alert alert-danger" role="alert">
 							{{errormsg}}
-					</div>
+					</div><br>
                         <div class="form-row">
                           <div class="name">  <i class="fa fa-envelope" aria-hidden="true"></i> Email 
                           </div>

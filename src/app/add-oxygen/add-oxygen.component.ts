@@ -28,6 +28,7 @@ export class AddOxygenComponent implements OnInit {
     this.createForm();
     this.user=new Users();
     this.oxygen=new Oxygen();
+    
   }
   
  ValidatePhone(control: AbstractControl): {[key: string]: any} | null  {
@@ -55,6 +56,8 @@ export class AddOxygenComponent implements OnInit {
     
     this.regions=this.sub.region;
     console.log(this.regions)
+
+    
   }
   onChange(e){
     console.log(e)

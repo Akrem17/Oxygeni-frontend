@@ -16,11 +16,17 @@ export class LoginComponent implements OnInit {
   errormsg: string=null;
 
   constructor(private fb: FormBuilder,private authService:AthService,private router:Router) { 
+  
+    if(this.router.getCurrentNavigation().extras.state){
+      this.errormsg=this.router.getCurrentNavigation().extras.state.msg; 
 
+    }
     this.createForm();
   }
 
   ngOnInit(): void {
+ // should log out 'bar'
+
   }
   createForm() {
     this.addOxygenForm = this.fb.group({
