@@ -208,6 +208,8 @@
   table {
     border-collapse: collapse;
     border-spacing: 0;
+    table-layout: fixed;
+    width: 100%;
   }
   
   /**
@@ -449,6 +451,10 @@
     font-size: 14px;
     font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
     font-weight: 400;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #BCBCBC;
+    word-wrap: break-word;
   }
   
   .daterangepicker td {
