@@ -43,7 +43,7 @@
                           <div class="name">*رقم الهاتف</div>
                           <div class="value">
                               <div class="input-group">
-                                  <input formControlName="telnum"  class="input--style-5"  minlength="8" type="text" name="email">
+                                  <input formControlName="telnum"  class="input--style-5"  minlength="8" type="number" name="email">
                               </div>
                               <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
                                 <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
@@ -129,7 +129,7 @@
                     <div class="name"> سوم الليلة  بالدينار</div>
                     <div class="value">
                         <div class="input-group">
-                            <input formControlName="prix"  class="input--style-5" type="email" name="email">
+                            <input formControlName="prix"  class="input--style-5" type="numver" name="email">
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                     <div class="name">الموديل<br> (modele)</div>
                     <div class="value">
                         <div class="input-group">
-                            <input formControlName="modele"  class="input--style-5" type="email" name="email">
+                            <input formControlName="modele"  class="input--style-5" type="text" name="email">
                         </div>
                     </div>
                 </div>
