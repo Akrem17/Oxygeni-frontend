@@ -27,9 +27,16 @@
                 <form   [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()"  autocomplete="off">
                     <h3 class="title">Contactez-nous</h3>
                     <div class="social-input-containers"> <input type="text" formControlName="name" name="name" class="input" placeholder="Nom" /> </div>
+                  
                     <div class="social-input-containers"> <input type="email" formControlName="email" name="email" class="input" placeholder="Email" /> </div>
+                     <!--   <div *ngIf="addOxygenForm.controls['email'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
+                                <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
+                                    tel is required.
+                              </div>
+                            </div> -->
                     <div class="social-input-containers"> <input type="tel" formControlName="phone" name="phone" class="input" placeholder="Tel" /> </div>
-                    <div class="social-input-containers textarea"> <textarea formControlName="message" name="message" class="input" placeholder="Message"></textarea> </div> <input [disabled]="!addOxygenForm.valid"  type="submit" value="Envoyer" class="btn" />
+                    <div class="social-input-containers textarea"> <textarea formControlName="message" name="message" class="input" placeholder="Message"></textarea> </div>
+                     <input [disabled]="!addOxygenForm.valid"  type="submit" value="Envoyer" class="btn" />
                 </form>
             </div>
         </div>

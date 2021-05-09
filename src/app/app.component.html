@@ -3,8 +3,8 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item" ><a class="nav-link " routerLink="/" >Home</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLink="/chercher" >Chercher une bouteille</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/ajouter"  >Ajouter une bouteille</a></li>
+                <li class="nav-item"><a class="nav-link"  routerLink="/chercher" >Chercher un concentrateur</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/ajouter"  >Ajouter un concentrateur</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/contactus">Contacter nous</a></li>
                 <li *ngIf="auth.loggedIn()" class="nav-item"><a class="nav-link" routerLink="/myposts">Mes posts</a></li>
                 <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link"routerLink="/login">Login</a></li>

@@ -20,7 +20,7 @@ export class ContactUsComponent implements OnInit {
   createForm() {
     this.addOxygenForm = this.fb.group({
       name:  new FormControl('',  [Validators.required]),
-      email:  new FormControl('',  [Validators.required]),
+      email:  new FormControl('',  [Validators.required,	Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       phone: '',
       message: new FormControl('',  [Validators.required]),
       
