@@ -753,13 +753,18 @@
   .card-5 .card-body {
     padding: 52px 85px;
     padding-bottom: 73px;
+    word-wrap    : break-word;
+overflow-wrap: break-word;
   }
   
   @media (max-width: 767px) {
     .card-5 .card-body {
       padding: 40px 30px;
       padding-bottom: 50px;
+      word-wrap    : break-word;
+overflow-wrap: break-word;
     }
+    
   }
   mat-paginator {
     display: flex;

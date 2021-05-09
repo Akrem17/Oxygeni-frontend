@@ -16,7 +16,7 @@
                     <table class="table">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">#</th>
+                         
                             <th scope="col">Capacité</th>
 <!--                             <th scope="col">Quantité</th>
  -->                            <th scope="col">Modele</th>
@@ -29,7 +29,6 @@
                         </thead>
                         <tbody>
                           <tr  *ngFor="let d of data.docs; let i = index" >
-                            <th *ngIf="d" scope="row">{{i+1}}</th>
                             <td *ngIf="d">{{d.capacite}} litres</td>
 <!--                             <td *ngIf="d.length>0">{{d..quantite}} concentrateurs</td>
  -->                            <td *ngIf="d">{{d.modele}} </td>
