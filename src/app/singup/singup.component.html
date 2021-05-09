@@ -1,4 +1,4 @@
-
+<br>
     <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div  class="wrapper wrapper--w790">
             <div class="card card-5">
@@ -15,7 +15,7 @@
                     <form   [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()" >
          
                         <div class="form-row">
-                          <div class="name">Email</div>
+                          <div class="name">Nom</div>
                           <div class="value">
                               <div class="input-group">
                                   <input formControlName="nom"  class="input--style-5" type="email" name="email">
@@ -57,7 +57,7 @@
 						<div class="name">Mot de passe</div>
 						<div class="value">
 							<div class="input-group">
-								<input formControlName="password"  class="input--style-5" type="prenom" name="email">
+								<input formControlName="password"  class="input--style-5" type="password" name="email">
 							</div>
 						
 						  <!--   <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
@@ -71,7 +71,7 @@
 						<div class="name">Confirmation Mot de passe</div>
 						<div class="value">
 							<div class="input-group">
-								<input formControlName="passwordConfirm"  class="input--style-5" type="prenom" name="email">
+								<input formControlName="passwordConfirm"  class="input--style-5" type="password" name="email">
 							</div>
 						  <!--   <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
 							  <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
