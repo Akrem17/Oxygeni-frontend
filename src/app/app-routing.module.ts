@@ -9,12 +9,16 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { SingupComponent } from './singup/singup.component';
+import { UserPostsComponent } from './user-posts/user-posts.component';
+import { UpdatePostComponent } from './user-posts/update-post/update-post.component';
 export const routes: Routes = [
   { path: 'ajouter',  component: AddOxygenComponent,canActivate:[AuthGuard] },
   { path: 'chercher',  component:CherherOxygenComponent },
   { path: 'contactus',  component:ContactUsComponent },
   { path: 'login',  component:LoginComponent },
   { path: 'signup',  component:SingupComponent },
+  { path: 'myposts',  component:UserPostsComponent },
+  { path: 'modifier/:id',  component:UpdatePostComponent },
 
   { path: 'list/:region/:ville',  component:OxygenListComponent },
   { path: '',  component: HomeComponent }

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AddOxygenComponent } from './add-oxygen/add-oxygen.component';
 import { AppRoutingModule, routes } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CherherOxygenComponent } from './cherher-oxygen/cherher-oxygen.component';
 import { OxygenListComponent } from './oxygen-list/oxygen-list.component';
@@ -28,6 +28,8 @@ import { OxygenService } from './shared/service/oxygen.service';
 import { AuthInterceptor } from './shared/service/auth-interceptor';
 import { RouterModule } from '@angular/router';
 import { SingupComponent } from './singup/singup.component';
+import { UserPostsComponent } from './user-posts/user-posts.component';
+import { UpdatePostComponent } from './user-posts/update-post/update-post.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { SingupComponent } from './singup/singup.component';
     ContactUsComponent,
     DialogOverviewExampleDialogComponent,
     LoginComponent,
-    SingupComponent
+    SingupComponent,
+    UserPostsComponent,
+    UpdatePostComponent
   ],
   imports: [
     BrowserModule,
@@ -55,8 +59,8 @@ import { SingupComponent } from './singup/singup.component';
     MatInputModule,
     MatTooltipModule,
     MatDialogModule,
-    RouterModule
-  ],
+    RouterModule,
+    FormsModule        ],
   providers: [AuthGuard,UserService,AthService,OxygenService,
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true},
 

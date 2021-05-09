@@ -108,7 +108,7 @@ export class AddOxygenComponent implements OnInit {
                 icon: 'success',
                 confirmButtonText: 'Cool'
               })
-              this.router.navigate(['/list', this.oxygen.region, this.oxygen.ville]);
+              this.router.navigate(['/myposts']);
     
     
             },err=>{

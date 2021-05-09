@@ -28,6 +28,9 @@ export class AthService {
   getToken(){
     return localStorage.getItem('token');
   }
+  getUser(){
+    return localStorage.getItem('userId');
+  }
 
   IsThereUser(){
     return !!localStorage.getItem('userId');

@@ -1,0 +1,119 @@
+<br><br><br>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div  class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Mise A jour</h2>
+                </div>
+                
+                
+                <div class="card-body" *ngIf="data">
+                    
+                    <div style="text-align: center;"> معلومات تخص المالك</div><br>
+                    <form   [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()" >
+         
+                        <div class="form-row">
+                          <div class="name">*رقم الهاتف</div>
+                          <div class="value">
+                              <div class="input-group">
+                                  <input formControlName="telnum"  class="input--style-5" type="number" name="email">
+                              </div>
+                            <!--   <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
+                                <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
+                                    tel is required.
+                              </div>
+                            </div> -->
+                          </div>
+                          
+
+                      </div>
+                   
+              
+                      <div class="form-row">
+                        <div class="name">*الولاية</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select (change)="onChange($event.target.value)" *ngIf="data" style="margin-right: 180px;" class="select-css"  formControlName="region" name="subject">
+                                        
+
+                                        <option    [selected]="region == data.region" *ngFor="let region of regions">{{region}}</option>   
+                                      
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                  <br>
+                  <div class="form-row">
+                    <div class="name">*المعتمدية</div>
+                    <div class="value">
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select  *ngIf="data" style="margin-right: 180px;" class="select-css" formControlName="villa" name="subject">
+                                    
+                                    <option    [selected]="v == data.ville" *ngFor="let v of ville">{{v}}</option>   
+
+                                  
+                                </select>
+                                
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+                      <div class="form-row">
+                        <div class="name">*السعة باللتر <br> (capacité en litre)</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input formControlName="capacite"  class="input--style-5" type="email" name="email">
+                            </div>
+                            <div *ngIf="addOxygenForm.controls['capacite'].invalid && (addOxygenForm.controls['capacite'].dirty || addOxygenForm.controls['capacite'].touched)" class="alert alert-danger">
+                                <div *ngIf="addOxygenForm.controls['capacite'].errors.required">
+                                    capacite is required.
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="name">عدد الماكينات (quantité)</div>
+                      <div class="value">
+                          <div class="input-group">
+                              <input formControlName="qte"  class="input--style-5" type="email" name="email">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="name"> سوم الليلة  بالدينار</div>
+                    <div class="value">
+                        <div class="input-group">
+                            <input formControlName="prix"  class="input--style-5" type="number" name="email">
+                        </div>
+                    </div>
+                </div>
+                  <div class="form-row">
+                    <div class="name">الموديل<br> (modele)</div>
+                    <div class="value">
+                        <div class="input-group">
+                            <input formControlName="modele"  class="input--style-5" type="email" name="email">
+                        </div>
+                    </div>
+                </div>
+                        <div style="text-align: center;">
+                           <button  [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">تسجيل</button>
+ -->                           <!--  <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                              </button> -->
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  

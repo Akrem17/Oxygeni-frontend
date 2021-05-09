@@ -1,0 +1,73 @@
+
+<br><br><br>
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+    <div  class="wrapper wrapper--w790">
+        <div class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">Mes posts</h2>
+
+            </div>
+            
+            <div class="card-body" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Capacité</th>
+<!--                             <th scope="col">Quantité</th>
+-->                            <th scope="col">Modele</th>
+                        <th scope="col">Prix/nuit</th>
+                        <th scope="col">Tel</th>
+                        <th scope="col" >Ville</th>
+                        <th scope="col">Region</th>
+                        <th scope="col" ></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr   *ngFor="let d of data; let i=index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td > {{d.capacite}} litres</td>
+                        <td >{{d.modele}} </td>
+                        <td >{{d.prix}}<span *ngIf="d.prix"> dt</span> </td>
+                        <td >{{d.tel}} </td>
+                        <td >{{d.ville}} </td>
+                        <td >{{d.region}} </td>
+                        <td ><button  routerLink="/modifier/{{d._id}}"  matTooltip="Modifier"  mat-raised-button  ><i class="fas fa-edit"></i> </button></td>
+                        <td ><button matTooltip="Supprimer" style="color: red;"  (click)="delete(d._id)" matTooltip="Rapporter"  mat-raised-button  ><i class="fas fa-trash-alt"></i> </button></td>
+
+                      </tr>
+                      
+                    </tbody>
+                    
+                  </table>
+               <div  style="text-align: center;">
+                <mat-paginator [length]="totalRecords" [pageSize]=" " [pageSizeOptions]="[5, 10, 20,100,200]" showFirstLastButtons (page)="onChangePage($event)"></mat-paginator>
+              </div>
+                </div>
+                </div>
+           <div style="text-align: center;" *ngIf="!data" >
+            <h1>  Vous avez aucun post veiller pour ajouter  <br><a routerLink="/ajouter">click ici</a> </h1>
+
+           </div>
+            </div>
+            
+        </div>
+       <br>
+     
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<ol>
+  <li>
+    
+  </li>
+  <li>
+    <button>Pick one</button>
+  </li>
+
+</ol>

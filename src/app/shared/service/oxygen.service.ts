@@ -14,11 +14,15 @@ export class OxygenService {
     console.log(this.url)
   }
   getAllOxygen(page?,limit?):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes?page="+page+"&"+"limit="+limit)}
-  getOneOxygen(id):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes/"+id)}
+  getOneOxygen(id):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes/one/"+id)}
   addOxygen(oxygen: Oxygen): Observable<Oxygen> {return this.http.post<Oxygen>(this.url+"/oxygenes/",oxygen)}
   getOxygenByRegionAndVille(region,ville,page?,limit?):Observable<any>{return this.http.get(this.url+"/oxygenes/"+region+"/"+ville+"?page="+page+"&"+"limit="+limit)}
   getOxygenByRegion(region,page?,limit?):Observable<any>{return this.http.get(this.url+"/oxygenes/"+region+"?page="+page+"&"+"limit="+limit)}
   getByAll(capacite,modele,region,tel,ville):Observable<any>{return this.http.get(this.url+"/oxygenes?capacite="+capacite+"&modele="+modele+"&region="+region+"&tel="+tel+"&ville="+ville)}
+  deleteOxygen(id):Observable<any>{return this.http.delete(this.url+"/oxygenes/one/"+id)}
+  getAllOxygenByUser(userId,page?,limit?):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes/user/"+userId+"?page="+page+"&"+"limit="+limit)}
+  updateOxygen(oxygenId,oxygen):Observable<Oxygen[]>{return this.http.put<Oxygen[]>(this.url+"/oxygenes/one/"+oxygenId,oxygen)}
+
 
 }
 
