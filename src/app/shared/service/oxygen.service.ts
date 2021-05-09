@@ -22,6 +22,7 @@ export class OxygenService {
   deleteOxygen(id):Observable<any>{return this.http.delete(this.url+"/oxygenes/one/"+id)}
   getAllOxygenByUser(userId,page?,limit?):Observable<Oxygen[]>{return this.http.get<Oxygen[]>(this.url+"/oxygenes/user/"+userId+"?page="+page+"&"+"limit="+limit)}
   updateOxygen(oxygenId,oxygen):Observable<Oxygen[]>{return this.http.put<Oxygen[]>(this.url+"/oxygenes/one/"+oxygenId,oxygen)}
+  sendmail(email,nom,tel,message):Observable<any>{return this.http.post<any>(this.url+"/mail",{email,nom,tel,message})}
 
 
 }

@@ -3,7 +3,7 @@
         <div  class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">بش نعاون بماكينة أكسيجين</h2>
+                    <h2 class="title">بش نحط ماكينة أكسيجين</h2>
                 </div>
                 
                 
@@ -43,13 +43,16 @@
                           <div class="name">*رقم الهاتف</div>
                           <div class="value">
                               <div class="input-group">
-                                  <input formControlName="telnum"  class="input--style-5" maxlength="8" minlength="8" type="number" name="email">
+                                  <input formControlName="telnum"  class="input--style-5"  minlength="8" type="text" name="email">
                               </div>
                               <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
                                 <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
                                     tel is required.
                               </div>
                             </div>
+                          <!--   <div class="error-message invalid-feedback" *ngIf="addOxygenForm.controls['telnum'].errors.pattern">
+                                invalid!
+                              </div> -->
                           </div>
                           
 
@@ -108,26 +111,20 @@
                 </div>
              
                       <div class="form-row">
-                        <div class="name">*السعة باللتر <br> (capacité en litre)</div>
+                        <div class="name">السعة باللتر <br> (capacité en litre)</div>
                         <div class="value">
                             <div class="input-group">
-                                <input formControlName="capacite"  class="input--style-5" type="email" name="email">
+                                <input formControlName="capacite"  class="input--style-5" type="number" name="email">
                             </div>
-                            <div *ngIf="addOxygenForm.controls['capacite'].invalid && (addOxygenForm.controls['capacite'].dirty || addOxygenForm.controls['capacite'].touched)" class="alert alert-danger">
+                        <!--     <div *ngIf="addOxygenForm.controls['capacite'].invalid && (addOxygenForm.controls['capacite'].dirty || addOxygenForm.controls['capacite'].touched)" class="alert alert-danger">
                                 <div *ngIf="addOxygenForm.controls['capacite'].errors.required">
                                     capacite is required.
                               </div>
-                            </div>
+                            </div> -->
+                            
                         </div>
                     </div>
-                    <div class="form-row">
-                      <div class="name">عدد الماكينات (quantité)</div>
-                      <div class="value">
-                          <div class="input-group">
-                              <input formControlName="qte"  class="input--style-5" type="email" name="email">
-                          </div>
-                      </div>
-                  </div>
+                  
                   <div class="form-row">
                     <div class="name"> سوم الليلة  بالدينار</div>
                     <div class="value">

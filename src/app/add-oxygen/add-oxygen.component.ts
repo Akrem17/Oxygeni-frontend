@@ -37,15 +37,17 @@ export class AddOxygenComponent implements OnInit {
   }
   return null;
 }
+
+phonePattern = /^[0-9]{10,12}$/;
   createForm() {
     this.addOxygenForm = this.fb.group({
     
-      telnum:  new FormControl('',  [Validators.required,Validators.minLength(8)]),
+      telnum:  new FormControl('',  [Validators.required,Validators.required, Validators.min(20000000), Validators.max(99999999)]),
      
       villa: new FormControl('إختار المعتمدية',[this.ValidatePhone]),
       region: new FormControl('إختار الولاية',[Validators.required]),
-      capacite: new FormControl('',  [Validators.required]),
-      qte:'',
+      capacite: new FormControl('',  [ Validators.max(200)]),
+     
       modele:'',
       prix:''
     
