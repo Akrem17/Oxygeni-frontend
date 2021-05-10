@@ -32,7 +32,7 @@
 
                   <li  *ngIf="!auth.loggedIn()" ><a routerLinkActive="cl"   routerLink="/login" style="color: #03506f !important; background-color:rgb(252, 252, 252);"class="nav-link">Login</a></li>
                   <li *ngIf="!auth.loggedIn()" ><a routerLinkActive="c2" routerLink="/signup" style="color: #030303 !important; background-color:#bae8e8"class="nav-link">Singup</a></li>
-                  <li *ngIf="auth.loggedIn()"(click)="auth.logout()" ><a   style="color: #f3f3f3 !important; background-color:#f15f4c"class="nav-link">Logout</a></li>
+                  <li *ngIf="auth.loggedIn()" ><a  routerLink="/logout"  style="color: #f3f3f3 !important; background-color:#f15f4c"class="nav-link">Logout</a></li>
 
                  <!--  <li   style="color: #03506f !important;" class="social"><a href="#contact-section" class="nav-link"><span class="icon-facebook"></span></a></li>
                   <li   style="color: #03506f !important;" class="social"><a href="#contact-section" class="nav-link"><span class="icon-twitter"></span></a></li>

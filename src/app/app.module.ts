@@ -30,6 +30,7 @@ import { RouterModule } from '@angular/router';
 import { SingupComponent } from './singup/singup.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UpdatePostComponent } from './user-posts/update-post/update-post.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UpdatePostComponent } from './user-posts/update-post/update-post.compon
     LoginComponent,
     SingupComponent,
     UserPostsComponent,
-    UpdatePostComponent
+    UpdatePostComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

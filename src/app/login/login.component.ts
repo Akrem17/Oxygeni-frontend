@@ -48,7 +48,11 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('token',res.token);
       //@ts-ignore
       localStorage.setItem('userId',res.user._id);
-      this.router.navigate(['/']);
+     
+      this.router.navigate(['/']).then(()=>{
+
+        location.reload()
+      });
 
     },err=>{
 
