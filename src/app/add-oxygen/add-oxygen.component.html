@@ -43,16 +43,20 @@
                           <div class="name">*رقم الهاتف</div>
                           <div class="value">
                               <div class="input-group">
-                                  <input formControlName="telnum"  class="input--style-5"  minlength="8" type="number" name="email">
+                                  <input  (keyup)="veriftel2($event)" (change)="veriftel($event)" formControlName="telnum"  class="input--style-5"  minlength="8" type="number" name="email">
                               </div>
-                              <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
+                              <div style="font-size: 8px; color: red; ">(*) Ce champ est obligatoire</div>
+
+                              <mat-error  *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)"> </mat-error>
+                              <mat-error  *ngIf="phoneerror"> Verifier le numero de tel</mat-error>
+
+                              <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alertr">
+                            
                                 <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
-                                    tel is required.
-                              </div>
+                                    <mat-error > Remplir ce champ svp</mat-error>
+                                </div>
                             </div>
-                          <!--   <div class="error-message invalid-feedback" *ngIf="addOxygenForm.controls['telnum'].errors.pattern">
-                                invalid!
-                              </div> -->
+               
                           </div>
                           
 
@@ -85,6 +89,8 @@
                                       
                                     </select>
                                     <div class="select-dropdown"></div>
+                                    <div style="font-size: 8px; color: red; ">(*) Ce champ est obligatoire</div>
+
                                 </div>
                             </div>
                         </div>
@@ -105,6 +111,7 @@
                                 </select>
                                 
                                 <div class="select-dropdown"></div>
+                                <div style="font-size: 8px; color: red; ">(*) Ce champ est obligatoire</div>
                             </div>
                         </div>
                     </div>
@@ -114,8 +121,10 @@
                         <div class="name">السعة باللتر <br> (capacité en litre)</div>
                         <div class="value">
                             <div class="input-group">
-                                <input formControlName="capacite"  class="input--style-5" type="number" name="email">
+                                <input (keyup)="verifcapacite2($event)" (change)="verifcapacite($event)" formControlName="capacite"  class="input--style-5" type="number" name="email">
                             </div>
+                            <mat-error  *ngIf="capaciteerror">Capacité maximal est 150 litres</mat-error>
+
                         <!--     <div *ngIf="addOxygenForm.controls['capacite'].invalid && (addOxygenForm.controls['capacite'].dirty || addOxygenForm.controls['capacite'].touched)" class="alert alert-danger">
                                 <div *ngIf="addOxygenForm.controls['capacite'].errors.required">
                                     capacite is required.

@@ -39,14 +39,33 @@ export class AddOxygenComponent implements OnInit {
 }
 
 phonePattern = /^[0-9]{10,12}$/;
-  createForm() {
+phoneerror:boolean=false;
+veriftel(e){
+  if(e.target.value.length!=8 || e.target.value<20000000) this.phoneerror=true
+}
+veriftel2(e){
+  
+  if(e.target.value.length==8 &&  e.target.value>=20000000 ) {
+    this.phoneerror=false}
+}
+ 
+capaciteerror:boolean=false;
+
+verifcapacite(e){
+  if(e.target.value<0 || e.target.value>150) this.capaciteerror=true
+}
+verifcapacite2(e){
+  
+  if(e.target.value>0 || e.target.value<151) {
+    this.capaciteerror=false}
+}createForm() {
     this.addOxygenForm = this.fb.group({
     
-      telnum:  new FormControl('',  [Validators.required,Validators.required, Validators.min(20000000), Validators.max(99999999)]),
+      telnum:  new FormControl('',  [Validators.required, Validators.min(20000000), Validators.max(99999999)]),
      
       villa: new FormControl('إختار المعتمدية',[this.ValidatePhone]),
       region: new FormControl('إختار الولاية',[Validators.required]),
-      capacite: new FormControl('',  [ Validators.max(200)]),
+      capacite: new FormControl('',  [ Validators.max(150)]),
      
       modele:'',
       prix:''
