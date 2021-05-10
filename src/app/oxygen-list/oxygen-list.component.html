@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-md-3"></div>
                     <table class="table">
-                        <thead class="thead-dark">
+                        <thead class="">
                           <tr>
                          
                             <th scope="col">Capacité</th>
@@ -47,7 +47,7 @@
                    <div  style="text-align: center;">
                     <mat-paginator [length]="totalRecords"
                     [pageSize]="itemPerPage"
-                    [pageSizeOptions]="[10, 25, 100]"
+                    [pageSizeOptions]="[5,10, 25, 100]"
                     (page)="handlePageEvent($event)"
                     >
                        </mat-paginator>                  </div>

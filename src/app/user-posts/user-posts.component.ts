@@ -24,7 +24,7 @@ export class UserPostsComponent implements OnInit {
 
    totalRecords:number=50
    page:number=1;
-   itemPerPage:number=10
+   itemPerPage:number=5
    pageEvent: PageEvent;
    animal: string;
    name: string;

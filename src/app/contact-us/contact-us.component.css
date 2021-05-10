@@ -43,7 +43,7 @@ textarea {
 }
 
 .contact-info-form {
-    background-color: rgba(59, 153, 252, 0.7);
+    background-color: #272343;
     position: relative
 }
 
@@ -210,7 +210,7 @@ textarea.input {
 }
 
 .contact-info .title {
-    color: rgba(59, 153, 252, 0.7);
+    color: #272343;
 }
 
 .text {
@@ -248,7 +248,7 @@ textarea.input {
     width: 35px;
     height: 35px;
     border-radius: 43px;
-    background: rgba(59, 153, 252, 0.7);
+    background: #272343;
     color: #fff;
     text-align: center;
     line-height: 35px;
@@ -265,7 +265,7 @@ textarea.input {
     position: absolute;
     width: 110px;
     height: 100px;
-    border: 22px solid rgba(59, 153, 252, 0.7);
+    border: 22px solid #272343;
     border-radius: 50%;
     bottom: -77px;
     right: 50px;
@@ -276,7 +276,7 @@ textarea.input {
     font-size: 22px;
     margin-bottom: 23px;
     margin-right: 8px;
-    color: rgba(59, 153, 252, 0.7);
+    color: #272343;
 }
 
 .big-circle {

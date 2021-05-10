@@ -26,7 +26,7 @@ export class OxygenListComponent implements OnInit {
 
    totalRecords:number=50
    page:number=1;
-   itemPerPage:number=10
+   itemPerPage:number=5
 
    animal: string;
    name: string;

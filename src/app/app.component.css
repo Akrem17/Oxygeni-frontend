@@ -218,3 +218,13 @@ html, body {
   .rights {
       font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
   }
+  a{
+    cursor: pointer;
+  }
+  .cl{
+    background-color: #fcfcfc !important;
+    font-weight: bolder;
+  }
+  .c2{
+    font-weight: bolder;
+  }

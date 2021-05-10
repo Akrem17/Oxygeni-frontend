@@ -1,21 +1,59 @@
-<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-    <div class="container"><a class="navbar-brand logo" href="#">Oxygeni</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item" ><a class="nav-link " routerLink="/" >Home</a></li>
-                <li class="nav-item"><a class="nav-link"  routerLink="/chercher" >Chercher un concentrateur</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/ajouter"  >Ajouter un concentrateur</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/contactus">Contacter nous</a></li>
-                <li *ngIf="auth.loggedIn()" class="nav-item"><a class="nav-link" routerLink="/myposts">Mes posts</a></li>
-                <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link"routerLink="/login">Login</a></li>
-                <li *ngIf="!auth.loggedIn()" class="nav-item"><a class="nav-link"routerLink="/signup">Signup</a></li>
-                <li *ngIf="auth.loggedIn()" class="nav-item"><button class="nav-link" (click)="auth.logout()">Logout</button></li>
 
-              </ul>
-        </div>
+  
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+      </div>
     </div>
-</nav>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+ 
+      
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+  
+        <div class="container">
+          <div class="row align-items-center">
+            
+            <div class="col-6 col-xl-2">
+              <h1 class="mb-0 site-logo"><a routerLink="/" ><img src="../assets/images/logo.png" width="130px" height="50px">   </a></h1>
+            </div>
+  
+            <div class="col-12 col-md-10 d-none d-xl-block">
+              <nav  class="site-navigation position-relative text-right" role="navigation">
+  
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                  <li   ><a routerLinkActive="cl" routerLink="/chercher" style="color: #03506f !important;" class="nav-link">Chercher un concentrateur</a></li>
+              
+                  
+                  <li><a routerLinkActive="cl" routerLink="/ajouter" style="color: #03506f !important;"  class="nav-link"> <span>Ajouter un concentrateur</span></a></li>
+                  <li ><a    routerLinkActive="cl" routerLink="/contactus" style="color: #03506f !important;" class="nav-link">Contacter nous</a></li>
+                  <li ><a routerLinkActive="cl" *ngIf="auth.loggedIn()" routerLink="/myposts"  style="color: #03506f !important; background-color:rgb(252, 252, 252)" class="nav-link">Mes publication</a></li>
 
+                  <li  *ngIf="!auth.loggedIn()" ><a routerLinkActive="cl"   routerLink="/login" style="color: #03506f !important; background-color:rgb(252, 252, 252);"class="nav-link">Login</a></li>
+                  <li *ngIf="!auth.loggedIn()" ><a routerLinkActive="c2" routerLink="/signup" style="color: #030303 !important; background-color:#bae8e8"class="nav-link">Singup</a></li>
+                  <li *ngIf="auth.loggedIn()"(click)="auth.logout()" ><a   style="color: #f3f3f3 !important; background-color:#f15f4c"class="nav-link">Logout</a></li>
+
+                 <!--  <li   style="color: #03506f !important;" class="social"><a href="#contact-section" class="nav-link"><span class="icon-facebook"></span></a></li>
+                  <li   style="color: #03506f !important;" class="social"><a href="#contact-section" class="nav-link"><span class="icon-twitter"></span></a></li>
+                  <li  style="color: #03506f !important;" class="social"><a href="#contact-section" class="nav-link"><span class="icon-linkedin"></span></a></li>
+                 --></ul>
+              </nav>
+            </div>
+  
+  
+            <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
+  
+          </div>
+        </div>
+        
+      </header>
+  
+    
+  
+    
+      
+      
 <router-outlet></router-outlet>
 <div class=" footer pb-0 justify-content-center text-light ">
     <footer>
@@ -28,7 +66,7 @@
                     <div class="col-xl-2 col-md-4 col-sm-4 col-12">
                         <h4 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h4>
                         <ul class="list-unstyled">
-                            <li  routerLink="/home" >Home</li>
+                            <li  routerLink="/" >Home</li>
                             <li  routerLink="/chercher">Chercher concentrateur</li>
                             <li  routerLink="/ajouter">Ajouter concentrateur</li>
                             <li  routerLink="/login">Login</li>

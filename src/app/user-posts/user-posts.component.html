@@ -9,11 +9,9 @@
             </div>
             
             <div class="card-body" >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                <table class="table">
-                    <thead class="thead-dark">
+               
+                <table  *ngIf="data" class="table">
+                    <thead >
                       <tr>
                  
                         <th scope="col">Capacité</th>
@@ -44,17 +42,16 @@
                     </tbody>
                     
                   </table>
-               <div  style="text-align: center;">
+               <div  *ngIf="data" style="text-align: center;">
                 <mat-paginator [length]="totalRecords"
                 [pageSize]="itemPerPage"
-                [pageSizeOptions]="[10, 25, 100]"
+                [pageSizeOptions]="[5,10, 25, 100]"
                 (page)="handlePageEvent($event)"
                 >
                    </mat-paginator>
                 </div>
           
-                </div>
-                </div>
+                
            <div style="text-align: center;" *ngIf="!data" >
             <h1>  Vous avez aucun post veiller pour ajouter  <br><a routerLink="/ajouter">click ici</a> </h1>
 

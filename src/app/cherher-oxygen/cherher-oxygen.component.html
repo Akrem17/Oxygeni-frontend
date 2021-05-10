@@ -8,10 +8,13 @@
                     <h2 class="title">نلوج على ماكينة أكسيجين</h2>
                 </div>
                 
-                <div class="card-body">
+                <div class="card-body d-flex justify-content-center">
                     
-              <form   style="text-align: center;" [formGroup]="OxygenForm" (ngSubmit)="onSubmit()">                        <div class="form-row">
+              <form   style="text-align: center; " [formGroup]="OxygenForm" (ngSubmit)="onSubmit()">                        <div class="form-row">
                             <div class="name">الولاية</div>
+
+
+                            
                             <div class="value">
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
@@ -26,23 +29,23 @@
                             </div>
                         </div>
                         <div class="form-row">
-                          <div class="name">المعتمدية</div>
-                          <div class="value">
-                              <div class="input-group">
-                                  <div class="rs-select2 js-select-simple select--no-search">
-                                      <select style="margin-right: 180px;" class="select-css" formControlName="villa" name="subject">
-                                          <option disabled="disabled" selected="selected">إختار المعتمدية</option>
+                            <div class="name">المعتمدية</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select style="margin-right: 180px;" class="select-css" formControlName="villa" name="subject">
+                                            <option disabled="disabled" selected="selected">إختار المعتمدية</option>
+                                            
+                                            <option  [ngValue]="v" *ngFor="let v of ville">{{v}}</option>
+  
                                           
-                                          <option  [ngValue]="v" *ngFor="let v of ville">{{v}}</option>
-
-                                        
-                                      </select>
-                                      <div class="select-dropdown"></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                     
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
                         <div>
                             <button *ngIf="!showSpinner" class="btn btn--radius-2 btn--red" type="submit">لوج</button>
                             <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
