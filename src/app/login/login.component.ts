@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   addOxygenForm: FormGroup;
   errormsg: string=null;
-
+  showSpinner:boolean=false;
   constructor(private fb: FormBuilder,private authService:AthService,private router:Router) { 
   
     if(this.router.getCurrentNavigation().extras.state){
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     
     console.log(this.addOxygenForm.value);
+    this.showSpinner=true;
     this.authService.login(this.addOxygenForm.value.email,this.addOxygenForm.value.password).subscribe(res=>{
 
 
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit {
       });
 
     },err=>{
-
+      this.showSpinner=false;
       console.log(err)
       console.log(err)
       if (err instanceof HttpErrorResponse){

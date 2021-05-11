@@ -45,8 +45,15 @@
 				 
               
                         <div style="text-align: center;">
-                           <button [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">login</button>
-                        <!--  <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
+                           <button *ngIf="!showSpinner"  [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">login</button>
+                           <button  *ngIf="showSpinner" [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">
+
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                          </button>
+                      
+                      
+                           <!--  <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 Loading...
                               </button> --><br><br><hr>
