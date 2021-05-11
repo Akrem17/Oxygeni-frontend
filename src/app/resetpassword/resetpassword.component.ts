@@ -27,14 +27,16 @@ export class ResetpasswordComponent implements OnInit {
         })
   }
 
+  showSpinner:boolean=false;
 
   updatePassword(){
     if(this.password!=this.passwordConfirm){
       this.passwordnotconfirmed=true
     }else{
       this.passwordnotconfirmed=false
-
+      this.showSpinner=true;
       this.auth.changepassword(this.id,this.token,this.password,this.passwordConfirm).subscribe(res=>{
+        this.showSpinner=false;
 
         console.log(res)
         Swal.fire({
@@ -47,6 +49,8 @@ export class ResetpasswordComponent implements OnInit {
             this.router.navigate(['/login'])
 
       },(err)=>{
+        this.showSpinner=false;
+
         console.log(err)
         this.router.navigate(['/login'])
       })

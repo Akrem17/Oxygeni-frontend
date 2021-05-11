@@ -11,7 +11,7 @@
                 <div class="card-body d-flex justify-content-center">
                     
               <form   style="text-align: center; " [formGroup]="OxygenForm" (ngSubmit)="onSubmit()">                        <div class="form-row">
-                            <div class="name">الولاية</div>
+                            <div class="name">الولاية*</div>
 
 
                             
@@ -26,6 +26,8 @@
                                         <div class="select-dropdown"></div>
                                     </div>
                                 </div>
+                                <div style="font-size: 8px; color: red; ">(*) Ce champ est obligatoire</div>
+
                             </div>
                         </div>
                         <div class="form-row">

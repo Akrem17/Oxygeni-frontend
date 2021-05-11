@@ -22,14 +22,18 @@ export class ForgetpasswordComponent implements OnInit {
   emailnonvalide:boolean=false;
   emailnexistepas:boolean=false;
 
-  
+  showSpinner:boolean=false;
+
     reset(){
     console.log(this.email)
       if(this.emailValidate(this.email)){
         this.emailnonvalide=false
         this.emailnexistepas=false
+        this.showSpinner=true;
+
         this.authService.forgetpassword(this.email).subscribe(res=>{
-          
+          this.showSpinner=false;
+
           Swal.fire({
             title: 'lien envoyer a '+this.email,
             text: 'lien est envoyer a votre email ( verifier spam )!',
@@ -39,7 +43,8 @@ export class ForgetpasswordComponent implements OnInit {
           this.email=""
           console.log("Lien a été envoyer a votre email ( verifier spam )")
         },(err)=>{
-         
+          this.showSpinner=false;
+
 
             if(err.error.msg="Email n existe pas "){
               this.emailnexistepas=true
