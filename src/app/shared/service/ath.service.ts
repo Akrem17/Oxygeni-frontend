@@ -39,5 +39,10 @@ export class AthService {
     return !!localStorage.getItem('userId');
 
   }
+
+  forgetpassword(email):Observable<any[]>{return this.http.post<any[]>(this.url+"/forgetpassword",{email})}
+  //resetpassword(id,token):Observable<any[]>{return this.http.get<any[]>(this.url+"/resetpassword/"+id+"/"+token)}
+  changepassword(id,token,password,passwordConfirm):Observable<any[]>{return this.http.post<any[]>(this.url+"/forgetpassword/"+id+"/"+token,{password,passwordConfirm})}
+
 }
 

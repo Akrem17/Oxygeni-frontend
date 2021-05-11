@@ -12,6 +12,8 @@ import { SingupComponent } from './singup/singup.component';
 import { UserPostsComponent } from './user-posts/user-posts.component';
 import { UpdatePostComponent } from './user-posts/update-post/update-post.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
 export const routes: Routes = [
   { path: 'ajouter',  component: AddOxygenComponent,canActivate:[AuthGuard] },
   { path: 'chercher',  component:CherherOxygenComponent },
@@ -20,6 +22,8 @@ export const routes: Routes = [
   { path: 'signup',  component:SingupComponent },
   { path: 'myposts',  component:UserPostsComponent },
   { path: 'logout',  component:LogoutComponent },
+  { path: 'forgetpassword',  component:ForgetpasswordComponent },
+  { path: 'forgetpassword/:id/:token',  component:ResetpasswordComponent },
 
   { path: 'modifier/:id',  component:UpdatePostComponent },
 
