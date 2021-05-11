@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       //@ts-ignore
       localStorage.setItem('userId',res.user._id);
      
-      this.router.navigate(['/']).then(()=>{
+      this.router.navigate(['/mesposts']).then(()=>{
 
         location.reload()
       });

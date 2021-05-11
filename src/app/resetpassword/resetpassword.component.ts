@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AthService } from '../shared/service/ath.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-resetpassword',
@@ -14,7 +15,7 @@ export class ResetpasswordComponent implements OnInit {
   password:string;
   passwordConfirm:string;
   passwordnotconfirmed:boolean=false;
-  constructor( private auth : AthService,private route: ActivatedRoute) { }
+  constructor( private auth : AthService,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -36,6 +37,18 @@ export class ResetpasswordComponent implements OnInit {
       this.auth.changepassword(this.id,this.token,this.password,this.passwordConfirm).subscribe(res=>{
 
         console.log(res)
+        Swal.fire({
+          title: 'Votre mot de passe a été changer avec success',
+          
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+         
+            this.router.navigate(['/login'])
+
+      },(err)=>{
+        console.log(err)
+        this.router.navigate(['/login'])
       })
     }
  
