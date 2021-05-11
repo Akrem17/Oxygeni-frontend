@@ -8,17 +8,14 @@
                 
                 
                 <div class="card-body">
-                    <br>
-					<div *ngIf="errormsg" class="alert alert-danger" role="alert">
-						{{errormsg}}
-				</div><br>
+                  
                     <form   [formGroup]="addOxygenForm" (ngSubmit)="onSubmit()" >
          
                         <div class="form-row">
                           <div class="name">Nom</div>
                           <div class="value">
                               <div class="input-group">
-                                  <input formControlName="nom"  class="input--style-5" type="email" name="email">
+                                  <input formControlName="nom"  class="input--style-5" type="text" name="name">
                               </div>
                             <!--   <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
                                 <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
@@ -31,7 +28,7 @@
 						<div class="name">Prenom</div>
 						<div class="value">
 							<div class="input-group">
-								<input formControlName="prenom"  class="input--style-5" type="prenom" name="email">
+								<input formControlName="prenom"  class="input--style-5" type="text" name="prenom">
 							</div>
 						  <!--   <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
 							  <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
@@ -44,8 +41,10 @@
 						<div class="name">Email</div>
 						<div class="value">
 							<div class="input-group">
-								<input formControlName="email"  class="input--style-5" type="prenom" name="email">
+								<input  (keyup)="verifemail2($event)" (change)="verifemail($event)" formControlName="email"  class="input--style-5" type="email" name="email">
 							</div>
+							<mat-error *ngIf="emailerror" > Email incorrect</mat-error>
+
 						  <!--   <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
 							  <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
 								  tel is required.
@@ -57,9 +56,10 @@
 						<div class="name">Mot de passe</div>
 						<div class="value">
 							<div class="input-group">
-								<input formControlName="password"  class="input--style-5" type="password" name="email">
+								<input   (keyup)="verifmotdepasse2($event)" (change)="verifmotdepasse($event)" formControlName="password"  class="input--style-5" type="password" name="email">
 							</div>
-						
+							<mat-error *ngIf="motdepasseerror" > Longeur minimal de mot de passe est 6 caracteres</mat-error>
+
 						  <!--   <div *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)" class="alert alert-danger">
 							  <div *ngIf="addOxygenForm.controls['telnum'].errors.required">
 								  tel is required.
@@ -80,11 +80,21 @@
 						  </div> -->
 						</div>
 					</div>
-				 
+					
+					<div *ngIf="errormsg" class="alert alert-danger" role="alert">
+						{{errormsg}}
+				</div><br>
               
                         <div style="text-align: center;">
-                           <button  [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">Signup</button>
-                        <!--  <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
+                           <button *ngIf="!showSpinner"  [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">Signup</button>
+                       
+                           <button *ngIf="showSpinner" [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">
+							<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...   
+
+						   </button>
+						
+						   <!--  <button *ngIf="showSpinner" class="btn btn-primary" type="button" disabled>
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                 Loading...
                               </button> --><br><br><hr>
