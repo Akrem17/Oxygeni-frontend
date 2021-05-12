@@ -3,7 +3,8 @@
         <div  class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
-                    <h2 class="title">Login</h2>
+                    <h2 class="title">Se connecter
+                    </h2>
                 </div>
                 
                 
@@ -45,11 +46,11 @@
 				 
               
                         <div style="text-align: center;">
-                           <button *ngIf="!showSpinner"  [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">login</button>
+                           <button *ngIf="!showSpinner"  [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">Se connecter</button>
                            <button  *ngIf="showSpinner" [disabled]="!addOxygenForm.valid" class="btn btn--radius-2 btn--red" type="submit">
 
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            Loading...
+                            Chargement en cours...
                           </button>
                       
                       
@@ -59,12 +60,12 @@
                               </button> --><br><br><hr>
                               <br>Vous n'avez pas un compte ? 
                                   <a class="txt2" routerLink="/signup" >
-                                  Signup
+                                  S'inscrire
                                   <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                                 </a>
-                                <br>Mot de passe oublier ? 
+                                <br>Mot de passe oublié ? 
                                 <a class="txt2" routerLink="/forgetpassword" >
-                                click ici
+                                  cliquer ici
                                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                               </a>
                         </div>

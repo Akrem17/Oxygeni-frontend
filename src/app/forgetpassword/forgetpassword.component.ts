@@ -35,13 +35,13 @@ export class ForgetpasswordComponent implements OnInit {
           this.showSpinner=false;
 
           Swal.fire({
-            title: 'lien envoyer a '+this.email,
-            text: 'lien est envoyer a votre email ( verifier spam )!',
+            title: 'Le lien est envoyé à '+this.email,
+            text: 'Le lien est envoyé à votre email ( verifier spam )!',
             icon: 'success',
             confirmButtonText: 'Cool'
           })
           this.email=""
-          console.log("Lien a été envoyer a votre email ( verifier spam )")
+          console.log("Le lien est envoyé ( verifier spam )")
         },(err)=>{
           this.showSpinner=false;
 

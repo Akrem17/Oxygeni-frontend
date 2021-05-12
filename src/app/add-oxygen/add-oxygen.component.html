@@ -45,7 +45,7 @@
                               <div class="input-group">
                                   <input  (keyup)="veriftel2($event)" (change)="veriftel($event)" formControlName="telnum"  class="input--style-5"  minlength="8" type="number" name="email">
                               </div>
-                              <div style="font-size: 8px; color: red; ">(*) Ce champ est obligatoire</div>
+                              <div style="font-size: 12px; color: red; ">لازم تعمر هذا (*) </div>
 
                               <mat-error  *ngIf="addOxygenForm.controls['telnum'].invalid && (addOxygenForm.controls['telnum'].dirty || addOxygenForm.controls['telnum'].touched)"> </mat-error>
                               <mat-error  *ngIf="phoneerror"> Verifier le numero de tel</mat-error>
@@ -89,7 +89,7 @@
                                       
                                     </select>
                                     <div class="select-dropdown"></div>
-                                    <div style="font-size: 8px; color: red; ">(*) Ce champ est obligatoire</div>
+                                    <div style="font-size: 12px; color: red; ">لازم تعمر هذا (*) </div>
 
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                                 </select>
                                 
                                 <div class="select-dropdown"></div>
-                                <div style="font-size: 8px; color: red; ">(*) Ce champ est obligatoire</div>
+                                <div style="font-size: 12px; color: red; ">لازم تعمر هذا (*) </div>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                             <div class="input-group">
                                 <input (keyup)="verifcapacite2($event)" (change)="verifcapacite($event)" formControlName="capacite"  class="input--style-5" type="number" name="email">
                             </div>
-                            <mat-error  *ngIf="capaciteerror">Capacité maximal est 150 litres</mat-error>
+                            <mat-error  *ngIf="capaciteerror">أعلى سعة 50 لتر</mat-error>
 
                         <!--     <div *ngIf="addOxygenForm.controls['capacite'].invalid && (addOxygenForm.controls['capacite'].dirty || addOxygenForm.controls['capacite'].touched)" class="alert alert-danger">
                                 <div *ngIf="addOxygenForm.controls['capacite'].errors.required">
@@ -154,7 +154,7 @@
                             <button  [disabled]="!addOxygenForm.valid" *ngIf="!showSpinner" class="btn btn--radius-2 btn--red" type="submit">تسجيل</button>
                             <button  [disabled]="!addOxygenForm.valid" *ngIf="showSpinner" class="btn btn--radius-2 btn--red" type="submit">
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                Loading...
+                                تحميل...
                               </button>
                         </div>
 

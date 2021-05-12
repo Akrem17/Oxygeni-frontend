@@ -12,27 +12,27 @@
       
       <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
   
-        <div class="container">
+        <div style="padding-left: 5%;padding-right: 10px " >
 
           <div class="row align-items-center">
-            <div class="col-6 col-xl-2">
-              <h1 class="mb-0 site-logo"><a routerLink="/" ><img [attr.src]="'assets/images/logo.png'" alt="logo" width="130px" height="50px">   </a></h1>
+            <div class="col-6 col-xl-2" >
+              <h1 class="mb-0 site-logo"><a routerLink="/" ><img [attr.src]="'assets/images/logo.png'" alt="logo" width="110px" height="60px">   </a></h1>
             </div>
   
             <div class="col-12 col-md-10 d-none d-xl-block">
-              <nav  class="site-navigation position-relative text-right" role="navigation">
+              <nav    class="site-navigation position-relative text-right" role="navigation">
   
-                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <ul    class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                   <li   ><a routerLinkActive="cl" routerLink="/chercher" style="color: #03506f !important;" class="nav-link">Chercher un concentrateur</a></li>
               
                   
                   <li><a routerLinkActive="cl" routerLink="/ajouter" style="color: #03506f !important;"  class="nav-link"> <span>Ajouter un concentrateur</span></a></li>
                   <li ><a    routerLinkActive="cl" routerLink="/contactus" style="color: #03506f !important;" class="nav-link">Contacter nous</a></li>
-                  <li ><a routerLinkActive="cl" *ngIf="auth.loggedIn()" routerLink="/myposts"  style="color: #03506f !important; background-color:rgb(252, 252, 252)" class="nav-link">Mes publication</a></li>
+                  <li ><a routerLinkActive="cl" *ngIf="auth.loggedIn()" routerLink="/myposts"  style="color: #03506f !important; background-color:rgb(252, 252, 252)" class="nav-link">Mes publications</a></li>
 
-                  <li  *ngIf="!auth.loggedIn()" ><a routerLinkActive="cl"   routerLink="/login" style="color: #03506f !important; background-color:rgb(252, 252, 252);"class="nav-link">Se connecté</a></li>
-                  <li *ngIf="!auth.loggedIn()" ><a routerLinkActive="c2" routerLink="/signup" style="color: #030303 !important; background-color:#bae8e8"class="nav-link">S'inscrit</a></li>
-                  <li *ngIf="auth.loggedIn()" ><a  routerLink="/logout"  style="color: #f3f3f3 !important; background-color:#f15f4c"class="nav-link">Logout</a></li>
+                  <li  *ngIf="!auth.loggedIn()" ><a routerLinkActive="cl"   routerLink="/login" style="color: #03506f !important; background-color:rgb(252, 252, 252);"class="nav-link">Se connecter</a></li>
+                  <li *ngIf="!auth.loggedIn()" ><a routerLinkActive="c2" routerLink="/signup" style="color: #030303 !important; background-color:#bae8e8"class="nav-link">S'inscrire</a></li>
+                  <li *ngIf="auth.loggedIn()" ><a  routerLink="/logout"  style="color: #f3f3f3 !important; background-color:#f15f4c"class="nav-link">Se deconnecter</a></li>
           
                  <!--  <li   style="color: #03506f !important;" class="social"><a href="#contact-section" class="nav-link"><span class="icon-facebook"></span></a></li>
                   <li   style="color: #03506f !important;" class="social"><a href="#contact-section" class="nav-link"><span class="icon-twitter"></span></a></li>

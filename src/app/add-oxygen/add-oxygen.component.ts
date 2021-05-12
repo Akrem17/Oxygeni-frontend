@@ -52,11 +52,11 @@ veriftel2(e){
 capaciteerror:boolean=false;
 
 verifcapacite(e){
-  if(e.target.value<0 || e.target.value>150) this.capaciteerror=true
+  if(e.target.value<0 || e.target.value>50) this.capaciteerror=true
 }
 verifcapacite2(e){
   
-  if(e.target.value>0 || e.target.value<151) {
+  if(e.target.value>0 && e.target.value<51) {
     this.capaciteerror=false}
 }createForm() {
     this.addOxygenForm = this.fb.group({
@@ -65,7 +65,7 @@ verifcapacite2(e){
      
       villa: new FormControl('إختار المعتمدية',[this.ValidatePhone]),
       region: new FormControl('إختار الولاية',[Validators.required]),
-      capacite: new FormControl('',  [ Validators.max(150)]),
+      capacite: new FormControl('',  [ Validators.max(50)]),
      
       modele:'',
       prix:''
