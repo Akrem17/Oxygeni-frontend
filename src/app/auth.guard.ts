@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
         return true;
 
       }else{
-        this._router.navigate(['login'], { state: { msg: "Veuillez connecter d'abord" }} );
+        this._router.navigate(['login'], { state: { msg: "Veuillez vous connecter d'abord" }} );
         return false;
       }
   }
